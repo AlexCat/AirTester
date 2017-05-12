@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Tion.MagicAirTester.Commands;
 using Tion.MagicAirTester.Contracts;
@@ -8,9 +9,15 @@ namespace Tion.MagicAirTester.Tester
     /// <summary></summary>
     public class BS310Parser<T>: IParser<T> where T: Command
     {
-        public bool CheckResult(T currentCommand, string data)
+        public bool CheckResult(T currentCommand, List<string> data)
         {
-            Debug.WriteLine(data);
+            string dogCsv = string.Join(",", data.ToArray());
+            if (dogCsv.Contains("help"))
+            {
+                
+            }
+            dogCsv.WriteToFile(@"C:\MD\OK.txt");
+            //Debug.WriteLine(data);
             return true;
         }
 

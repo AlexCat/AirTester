@@ -9,6 +9,6 @@ namespace Tion.MagicAirTester.Contracts
 {
     public interface IParser<in T>
     {
-        bool CheckResult(T currentCommand, string data);
+        bool CheckResult(T currentCommand, List<string> data);
     }
 }
