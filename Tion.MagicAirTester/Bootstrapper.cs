@@ -1,5 +1,8 @@
 ﻿using Autofac;
 using Tion.DeviceTester.Infrastructure.Factories;
+using Tion.MagicAirTester.Contracts;
+using Tion.MagicAirTester.DeviceFinder;
+using Tion.MagicAirTester.Infrastructure.Factories;
 
 namespace Tion.MagicAirTester {
 
@@ -15,6 +18,9 @@ namespace Tion.MagicAirTester {
             //builder.RegisterType<OutputService>().As<IOutputService>().SingleInstance();
             //builder.RegisterType<FormAbout>().AsSelf().SingleInstance();
             builder.RegisterType<FormFactory>().AsSelf().SingleInstance();
+            builder.RegisterType<DeviceFinderFactory>().AsSelf().SingleInstance();
+            builder.RegisterType<TestersFactory>().AsSelf().SingleInstance();
+            builder.RegisterType<BS310DeviceFinder>().As<IDeviceFinder>();
 
             return builder.Build();
         }
