@@ -1,0 +1,22 @@
+﻿using Autofac;
+using Tion.DeviceTester.Infrastructure.Factories;
+
+namespace Tion.MagicAirTester {
+
+    /// <summary>
+    /// SimpleInjector container initialization
+    /// </summary>
+    public static class Bootstrapper {
+        public static IContainer Initialize() {
+            var builder = new ContainerBuilder();
+
+            //var logger = log4net.LogManager.GetLogger(Assembly.GetExecutingAssembly(), "Logger");
+            //builder.Register(x => logger).SingleInstance();
+            //builder.RegisterType<OutputService>().As<IOutputService>().SingleInstance();
+            //builder.RegisterType<FormAbout>().AsSelf().SingleInstance();
+            builder.RegisterType<FormFactory>().AsSelf().SingleInstance();
+
+            return builder.Build();
+        }
+    }
+}
