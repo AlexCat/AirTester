@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BS310Parser.cs" />
+    <Compile Include="Bs310Parser.cs" />
     <Compile Include="DeviceTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

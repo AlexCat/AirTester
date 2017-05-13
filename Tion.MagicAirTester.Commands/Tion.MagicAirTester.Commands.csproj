@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BS310Command.cs" />
+    <Compile Include="BS310CommandResult.cs" />
+    <Compile Include="BS310CommandResultProperty.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="CommandResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

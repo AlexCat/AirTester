@@ -22,7 +22,7 @@ namespace Tion.MagicAirTester.Forms
         {
             InitializeComponent();
 
-            DeviceTester<BS310Command> _deviceTester = testersFactory.CreateBs310Tester();
+            DeviceTester<Bs310Command> _deviceTester = testersFactory.CreateBs310Tester();
             _deviceTester.Run(true);
         }
     }

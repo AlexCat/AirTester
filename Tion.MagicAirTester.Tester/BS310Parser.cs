@@ -7,7 +7,7 @@ using Tion.MagicAirTester.Contracts;
 namespace Tion.MagicAirTester.Tester
 {
     /// <summary></summary>
-    public class BS310Parser<T>: IParser<T> where T: Command
+    public class Bs310Parser<T>: IParser<T> where T: Command
     {
         public bool CheckResult(T currentCommand, List<string> data)
         {
