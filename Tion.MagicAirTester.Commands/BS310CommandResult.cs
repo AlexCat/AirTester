@@ -6,8 +6,15 @@
         {
             property = Property;
             value = Value;
+            IsResultNeeded = true;
+        }
+
+        public BS310CommandResult()
+        {
+            
         }
         public Bs310CommandResultProperty Property { get; }
         public string Value { get; }
+        public bool IsResultNeeded { get; }
     }
 }

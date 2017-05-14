@@ -25,5 +25,14 @@ namespace Tion.MagicAirTester.Forms
             DeviceTester<Bs310Command> _deviceTester = testersFactory.CreateBs310Tester();
             _deviceTester.Run(true);
         }
+
+        private void button_magicAirFind_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void groupBox_testingIndicators_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

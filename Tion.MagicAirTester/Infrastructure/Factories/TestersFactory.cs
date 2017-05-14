@@ -21,12 +21,18 @@ namespace Tion.MagicAirTester.Infrastructure.Factories
 
         public DeviceTester<Bs310Command> CreateBs310Tester()
         {
-            var commands = new List<Bs310Command>()
+            var scenario1 = new List<Bs310Command>()
             {
                // new Bs310Command("logenable"),
-                new Bs310Command(1, "help", new BS310CommandResult(Bs310CommandResultProperty.Speed, "1"))
+                new Bs310Command(1, "upvent 1", new BS310CommandResult()),
+                new Bs310Command(1, "upvent 1", new BS310CommandResult()),
+                new Bs310Command(1, "upvent 1", new BS310CommandResult()),
+                new Bs310Command(1, "upvent 1", new BS310CommandResult()),
+                new Bs310Command(1, "upvent 1", new BS310CommandResult()),
+                new Bs310Command(1, "upvent 1", new BS310CommandResult()),
+                new Bs310Command(1, "", new BS310CommandResult()),
             };
-            return new DeviceTester<Bs310Command>(commands, new Bs310Parser<Bs310Command>(), _deviceFinderFactory.CreateBS310Finder());
+            return new DeviceTester<Bs310Command>(scenario1, new Bs310Parser<Bs310Command>(), _deviceFinderFactory.CreateBS310Finder());
         }
     }
 }

@@ -63,6 +63,9 @@
     <Compile Include="Infrastructure\Factories\TestersFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -104,6 +107,15 @@
       <Project>{90CB8521-B2DC-4D6A-9A8B-26A658B998B5}</Project>
       <Name>Tion.MagicAirTester.Tester</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\breezer-logo_r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\breezer-logo_rr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_rr.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
