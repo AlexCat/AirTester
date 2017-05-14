@@ -113,6 +113,7 @@
             this.checkBox_autotest.Text = "Automatic test";
             this.checkBox_autotest.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox_autotest.UseVisualStyleBackColor = true;
+            this.checkBox_autotest.CheckedChanged += new System.EventHandler(this.checkBox_autotest_CheckedChanged);
             // 
             // button_magicAirFind
             // 
@@ -131,7 +132,7 @@
             this.groupBox_testingIndicators.Controls.Add(this.pictureBox1);
             this.groupBox_testingIndicators.Location = new System.Drawing.Point(11, 110);
             this.groupBox_testingIndicators.Name = "groupBox_testingIndicators";
-            this.groupBox_testingIndicators.Size = new System.Drawing.Size(240, 128);
+            this.groupBox_testingIndicators.Size = new System.Drawing.Size(262, 127);
             this.groupBox_testingIndicators.TabIndex = 3;
             this.groupBox_testingIndicators.TabStop = false;
             this.groupBox_testingIndicators.Text = "Indicators";
@@ -140,7 +141,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Tion.MagicAirTester.Properties.Resources.ok_rr;
-            this.pictureBox3.Location = new System.Drawing.Point(163, 37);
+            this.pictureBox3.Location = new System.Drawing.Point(179, 35);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(71, 59);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -150,7 +151,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Tion.MagicAirTester.Properties.Resources.breezer_logo_rr;
-            this.pictureBox2.Location = new System.Drawing.Point(85, 37);
+            this.pictureBox2.Location = new System.Drawing.Point(95, 35);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(71, 59);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -162,9 +163,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 37);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 35);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(71, 59);
+            this.pictureBox1.Size = new System.Drawing.Size(71, 58);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -174,9 +175,9 @@
             this.groupBox_breezerControls.Controls.Add(this.button_unpairBreezer);
             this.groupBox_breezerControls.Controls.Add(this.button_breezerSpeedDown);
             this.groupBox_breezerControls.Controls.Add(this.button_breezerSpeedUp);
-            this.groupBox_breezerControls.Location = new System.Drawing.Point(17, 262);
+            this.groupBox_breezerControls.Location = new System.Drawing.Point(11, 243);
             this.groupBox_breezerControls.Name = "groupBox_breezerControls";
-            this.groupBox_breezerControls.Size = new System.Drawing.Size(256, 100);
+            this.groupBox_breezerControls.Size = new System.Drawing.Size(262, 100);
             this.groupBox_breezerControls.TabIndex = 4;
             this.groupBox_breezerControls.TabStop = false;
             this.groupBox_breezerControls.Text = "Breezer controls";
@@ -210,7 +211,7 @@
             // 
             // button_unpairBreezer
             // 
-            this.button_unpairBreezer.Location = new System.Drawing.Point(126, 25);
+            this.button_unpairBreezer.Location = new System.Drawing.Point(131, 25);
             this.button_unpairBreezer.Name = "button_unpairBreezer";
             this.button_unpairBreezer.Size = new System.Drawing.Size(115, 29);
             this.button_unpairBreezer.TabIndex = 2;
@@ -221,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 396);
+            this.ClientSize = new System.Drawing.Size(285, 356);
             this.Controls.Add(this.button_connectBreezer);
             this.Controls.Add(this.groupBox_breezerControls);
             this.Controls.Add(this.groupBox_testingIndicators);
@@ -233,6 +234,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "MagicAir Tester";
             this.menuStrip1.ResumeLayout(false);

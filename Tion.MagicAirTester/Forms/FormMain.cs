@@ -21,9 +21,9 @@ namespace Tion.MagicAirTester.Forms
         public FormMain(FormFactory formFactory, TestersFactory testersFactory)
         {
             InitializeComponent();
-
+            InitializeControls();
             DeviceTester<Bs310Command> _deviceTester = testersFactory.CreateBs310Tester();
-            _deviceTester.Run(true);
+            _deviceTester.Run(this.checkBox_autotest.Checked);
         }
 
         private void button_magicAirFind_Click(object sender, EventArgs e)
@@ -33,6 +33,16 @@ namespace Tion.MagicAirTester.Forms
         private void groupBox_testingIndicators_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox_autotest_CheckedChanged(object sender, EventArgs e)
+        {
+            this.groupBox_breezerControls.Enabled = !this.checkBox_autotest.Checked;
+        }
+
+        private void InitializeControls()
+        {
+            checkBox_autotest_CheckedChanged(null, null);
         }
     }
 }
