@@ -22,8 +22,12 @@ namespace Tion.MagicAirTester.Forms
         {
             InitializeComponent();
             InitializeControls();
-            DeviceTester<Bs310Command> _deviceTester = testersFactory.CreateBs310Tester();
-            _deviceTester.Run(this.checkBox_autotest.Checked);
+            CommandExecutor<Bs310Command> commandExecutor = testersFactory.CreateBs310Tester();
+            if (this.checkBox_autotest.Checked)
+            {
+                commandExecutor.RunAutotest();
+            }
+            
         }
 
         private void button_magicAirFind_Click(object sender, EventArgs e)

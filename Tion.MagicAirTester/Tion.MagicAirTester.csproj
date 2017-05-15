@@ -58,6 +58,7 @@
     <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ControlExtensions.cs" />
     <Compile Include="Infrastructure\Factories\DeviceFinderFactory.cs" />
     <Compile Include="Infrastructure\Factories\FormFactory.cs" />
     <Compile Include="Infrastructure\Factories\TestersFactory.cs" />

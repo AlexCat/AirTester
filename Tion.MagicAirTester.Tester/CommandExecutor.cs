@@ -12,7 +12,7 @@ using Timer = System.Timers.Timer;
 
 namespace Tion.MagicAirTester.Tester
 {
-    public class DeviceTester<T> : IDisposable where T : Command
+    public class CommandExecutor<T> : IDisposable where T : Command
     {
         private readonly Queue<T> _commands;
         private readonly IParser<T> _parser;
@@ -21,7 +21,7 @@ namespace Tion.MagicAirTester.Tester
         private List<string> _currentCommandReport;
         private T _currentCommand;
 
-        public DeviceTester(IEnumerable<T> commands, IParser<T> parser, IDeviceFinder finder)
+        public CommandExecutor(IEnumerable<T> commands, IParser<T> parser, IDeviceFinder finder)
         {
             _commands = new Queue<T>(commands.OrderBy(x => x.OrderId));
             _parser = parser;
@@ -37,22 +37,13 @@ namespace Tion.MagicAirTester.Tester
             return bytesCommand.ToArray();
         }
 
-        public void Run(bool testAutomatically)
+        public void RunAutotest()
         {
             _finder.Run(device =>
             {
                 _hidDevice = device;
-                //
-                //_hidDevice.OpenDevice();
-                //_hidDevice.Write(ConvertToBytes("logenable"));
-                //_hidDevice.CloseDevice();
-
-                //
-                if (testAutomatically)
-                {
-                    _currentCommand = _commands.Dequeue();
-                    ExecuteAutoCommand();
-                }
+                _currentCommand = _commands.Dequeue();
+                ExecuteAutoCommand();
             });
         }
 

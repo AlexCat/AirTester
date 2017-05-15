@@ -19,7 +19,7 @@ namespace Tion.MagicAirTester.Infrastructure.Factories
             _deviceFinderFactory = deviceFinderFactory;
         }
 
-        public DeviceTester<Bs310Command> CreateBs310Tester()
+        public CommandExecutor<Bs310Command> CreateBs310Tester()
         {
             var scenario1 = new List<Bs310Command>()
             {
@@ -32,7 +32,7 @@ namespace Tion.MagicAirTester.Infrastructure.Factories
                 new Bs310Command(1, "upvent 1", new BS310CommandResult()),
                 new Bs310Command(1, "", new BS310CommandResult()),
             };
-            return new DeviceTester<Bs310Command>(scenario1, new Bs310Parser<Bs310Command>(), _deviceFinderFactory.CreateBS310Finder());
+            return new CommandExecutor<Bs310Command>(scenario1, new Bs310Parser<Bs310Command>(), _deviceFinderFactory.CreateBS310Finder());
         }
     }
 }
