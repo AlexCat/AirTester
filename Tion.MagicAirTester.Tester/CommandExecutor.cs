@@ -20,6 +20,7 @@ namespace Tion.MagicAirTester.Tester
         private IHidDevice _hidDevice;
         private List<string> _currentCommandReport;
         private T _currentCommand;
+        private Action<LogType, string> _outputAction;
 
         public CommandExecutor(IEnumerable<T> commands, IParser<T> parser, IDeviceFinder finder)
         {
@@ -37,11 +38,14 @@ namespace Tion.MagicAirTester.Tester
             return bytesCommand.ToArray();
         }
 
-        public void StartAutotest()
+        public void StartAutotest(Action<LogType, string> outputAction)
         {
+            _outputAction = outputAction;
             _finder.Run(device =>
             {
+                
                 _hidDevice = device;
+                _outputAction?.Invoke(LogType.Info, "MagicAir BS310 found");
                 _currentCommand = _commands.Dequeue();
                 ExecuteAutoCommand();
             });
@@ -58,6 +62,7 @@ namespace Tion.MagicAirTester.Tester
                 WaitExecutionCommandResult();
                 
                 _hidDevice.ReadReport(OnReportAction);
+                _outputAction?.Invoke(LogType.Info, $"Write command {_currentCommand.CommandName} ({BitConverter.ToString(_currentCommand.BytesCommand)})");
                 _hidDevice.Write(_currentCommand.BytesCommand);
             }
         }

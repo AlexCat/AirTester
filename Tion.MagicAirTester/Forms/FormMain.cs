@@ -11,6 +11,7 @@ using Tion.DeviceTester.Infrastructure.Factories;
 using Tion.MagicAirTester.Commands;
 using Tion.MagicAirTester.Contracts;
 using Tion.MagicAirTester.DeviceFinder;
+using Tion.MagicAirTester.Infrastructure;
 using Tion.MagicAirTester.Infrastructure.Factories;
 using Tion.MagicAirTester.Tester;
 
@@ -18,14 +19,23 @@ namespace Tion.MagicAirTester.Forms
 {
     public partial class FormMain : Form
     {
+        private readonly IOutputService _outputService;
+
         public FormMain(FormFactory formFactory, TestersFactory testersFactory, IOutputService outputService)
         {
+            _outputService = outputService;
             InitializeComponent();
             InitializeControls();
             CommandExecutor<Bs310Command> commandExecutor = testersFactory.CreateBs310Tester();
             if (this.checkBox_autotest.Checked)
             {
-                commandExecutor.StartAutotest();
+                commandExecutor.StartAutotest((x, y) =>
+                {
+                    this.InvokeIfRequired(c =>
+                    {
+                        _outputService.Log(x, y);
+                    });
+                });
             }
             
         }
@@ -46,7 +56,20 @@ namespace Tion.MagicAirTester.Forms
 
         private void InitializeControls()
         {
+            _outputService.Log(LogType.Info, "Initializing...");
             checkBox_autotest_CheckedChanged(null, null);
+            output.DataBindings.Add("Text", _outputService, "Data", true, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        private void output_TextChanged(object sender, EventArgs e)
+        {
+            ScrollToCaret();
+        }
+
+        private void ScrollToCaret()
+        {
+            output.SelectionStart = output.Text.Length;
+            output.ScrollToCaret();
         }
     }
 }

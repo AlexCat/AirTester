@@ -42,10 +42,11 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox_breezerControls = new System.Windows.Forms.GroupBox();
-            this.button_connectBreezer = new System.Windows.Forms.Button();
-            this.button_breezerSpeedUp = new System.Windows.Forms.Button();
-            this.button_breezerSpeedDown = new System.Windows.Forms.Button();
             this.button_unpairBreezer = new System.Windows.Forms.Button();
+            this.button_breezerSpeedDown = new System.Windows.Forms.Button();
+            this.button_breezerSpeedUp = new System.Windows.Forms.Button();
+            this.button_connectBreezer = new System.Windows.Forms.Button();
+            this.output = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox_testingIndicators.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -62,7 +63,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(285, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(958, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -182,23 +183,14 @@
             this.groupBox_breezerControls.TabStop = false;
             this.groupBox_breezerControls.Text = "Breezer controls";
             // 
-            // button_connectBreezer
+            // button_unpairBreezer
             // 
-            this.button_connectBreezer.Location = new System.Drawing.Point(150, 71);
-            this.button_connectBreezer.Name = "button_connectBreezer";
-            this.button_connectBreezer.Size = new System.Drawing.Size(125, 29);
-            this.button_connectBreezer.TabIndex = 5;
-            this.button_connectBreezer.Text = "Connect Breezer";
-            this.button_connectBreezer.UseVisualStyleBackColor = true;
-            // 
-            // button_breezerSpeedUp
-            // 
-            this.button_breezerSpeedUp.Location = new System.Drawing.Point(18, 25);
-            this.button_breezerSpeedUp.Name = "button_breezerSpeedUp";
-            this.button_breezerSpeedUp.Size = new System.Drawing.Size(92, 29);
-            this.button_breezerSpeedUp.TabIndex = 0;
-            this.button_breezerSpeedUp.Text = "Speed Up";
-            this.button_breezerSpeedUp.UseVisualStyleBackColor = true;
+            this.button_unpairBreezer.Location = new System.Drawing.Point(131, 25);
+            this.button_unpairBreezer.Name = "button_unpairBreezer";
+            this.button_unpairBreezer.Size = new System.Drawing.Size(115, 29);
+            this.button_unpairBreezer.TabIndex = 2;
+            this.button_unpairBreezer.Text = "Unpair Breezer";
+            this.button_unpairBreezer.UseVisualStyleBackColor = true;
             // 
             // button_breezerSpeedDown
             // 
@@ -209,20 +201,40 @@
             this.button_breezerSpeedDown.Text = "Speed Down";
             this.button_breezerSpeedDown.UseVisualStyleBackColor = true;
             // 
-            // button_unpairBreezer
+            // button_breezerSpeedUp
             // 
-            this.button_unpairBreezer.Location = new System.Drawing.Point(131, 25);
-            this.button_unpairBreezer.Name = "button_unpairBreezer";
-            this.button_unpairBreezer.Size = new System.Drawing.Size(115, 29);
-            this.button_unpairBreezer.TabIndex = 2;
-            this.button_unpairBreezer.Text = "Unpair Breezer";
-            this.button_unpairBreezer.UseVisualStyleBackColor = true;
+            this.button_breezerSpeedUp.Location = new System.Drawing.Point(18, 25);
+            this.button_breezerSpeedUp.Name = "button_breezerSpeedUp";
+            this.button_breezerSpeedUp.Size = new System.Drawing.Size(92, 29);
+            this.button_breezerSpeedUp.TabIndex = 0;
+            this.button_breezerSpeedUp.Text = "Speed Up";
+            this.button_breezerSpeedUp.UseVisualStyleBackColor = true;
+            // 
+            // button_connectBreezer
+            // 
+            this.button_connectBreezer.Location = new System.Drawing.Point(150, 71);
+            this.button_connectBreezer.Name = "button_connectBreezer";
+            this.button_connectBreezer.Size = new System.Drawing.Size(125, 29);
+            this.button_connectBreezer.TabIndex = 5;
+            this.button_connectBreezer.Text = "Connect Breezer";
+            this.button_connectBreezer.UseVisualStyleBackColor = true;
+            // 
+            // output
+            // 
+            this.output.Location = new System.Drawing.Point(294, 71);
+            this.output.Name = "output";
+            this.output.ReadOnly = true;
+            this.output.Size = new System.Drawing.Size(542, 272);
+            this.output.TabIndex = 6;
+            this.output.Text = "";
+            this.output.TextChanged += new System.EventHandler(this.output_TextChanged);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 356);
+            this.ClientSize = new System.Drawing.Size(958, 356);
+            this.Controls.Add(this.output);
             this.Controls.Add(this.button_connectBreezer);
             this.Controls.Add(this.groupBox_breezerControls);
             this.Controls.Add(this.groupBox_testingIndicators);
@@ -233,7 +245,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "MagicAir Tester";
@@ -268,5 +280,6 @@
         private System.Windows.Forms.Button button_breezerSpeedDown;
         private System.Windows.Forms.Button button_breezerSpeedUp;
         private System.Windows.Forms.Button button_connectBreezer;
+        private System.Windows.Forms.RichTextBox output;
     }
 }

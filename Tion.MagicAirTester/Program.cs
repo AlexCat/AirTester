@@ -25,8 +25,6 @@ namespace Tion.MagicAirTester
 
             var formFactory = _container.Resolve<FormFactory>();
             Application.Run(formFactory.CreateMainForm());
-
-            _container = Bootstrapper.Initialize();
         }
     }
 }
