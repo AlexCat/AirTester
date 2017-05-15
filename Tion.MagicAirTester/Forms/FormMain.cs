@@ -52,18 +52,21 @@ namespace Tion.MagicAirTester.Forms
 
             _commandExecutor = _testersFactory.CreateBs310Tester();
             _commandExecutor.DeviceDataReceived += OnBreezerConnected;
-            _commandExecutor.DeviceFound += OnDeviceFound;
+            _commandExecutor.DeviceFound += OnMagicAirFound;
         }
 
-        private void OnDeviceFound(object sender, EventArgs eventArgs)
+        private void OnMagicAirFound(object sender, EventArgs eventArgs)
         {
-            _magicAirState.isFound = true;
-            this.button_connectBreezer.Enabled = true;
-            if (this.checkBox_autotest.Checked)
+            this.InvokeIfRequired(control =>
             {
-                _outputService.Log(LogType.Info, "Autotest started");
-                _commandExecutor.StartAutotest();
-            }
+                _magicAirState.isFound = true;
+                this.button_connectBreezer.Enabled = true;
+                if (this.checkBox_autotest.Checked)
+                {
+                    _outputService.Log(LogType.Info, "Autotest started");
+                    _commandExecutor.StartAutotest();
+                }
+            });
         }
 
         private void OnBreezerConnected(object o, DeviceFoundArgs deviceFoundArgs)
