@@ -38,9 +38,6 @@ namespace Tion.MagicAirTester.Forms
 
         private void ResetFormState()
         {
-            _magicAirState = new MagicAirState();
-            _breezerState = new BreezerState();
-
             this.button_connectBreezer.Enabled = false;
             this.groupBox_breezerControls.Enabled = false;
             _outputService.Clear();
@@ -49,6 +46,9 @@ namespace Tion.MagicAirTester.Forms
         private void InitializeNewCommandExecutor()
         {
             ResetFormState();
+
+            _magicAirState = new MagicAirState();
+            _breezerState = new BreezerState();
 
             _commandExecutor = _testersFactory.CreateBs310Tester();
             _commandExecutor.DeviceDataReceived += OnBreezerConnected;
@@ -82,7 +82,6 @@ namespace Tion.MagicAirTester.Forms
                     _breezerState.Speed = currentSpeed;
                     _outputService.Log(LogType.Info, $"The speed was changed to {currentSpeed}");
                 }
-
             });
         }
 
