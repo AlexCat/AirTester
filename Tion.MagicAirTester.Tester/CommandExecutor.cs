@@ -37,7 +37,7 @@ namespace Tion.MagicAirTester.Tester
             return bytesCommand.ToArray();
         }
 
-        public void RunAutotest()
+        public void StartAutotest()
         {
             _finder.Run(device =>
             {
@@ -58,7 +58,7 @@ namespace Tion.MagicAirTester.Tester
                 WaitExecutionCommandResult();
                 
                 _hidDevice.ReadReport(OnReportAction);
-                ExcecuteCommand();
+                _hidDevice.Write(_currentCommand.BytesCommand);
             }
         }
 
@@ -77,7 +77,7 @@ namespace Tion.MagicAirTester.Tester
 
         private void WaitExecutionCommandResult()
         {
-            var timer = new Timer(5000);
+            var timer = new Timer(_currentCommand.TimeToExecute);
             timer.Elapsed += (sender, args) =>
             {
                 timer.Stop();
@@ -94,16 +94,9 @@ namespace Tion.MagicAirTester.Tester
             timer.Start();
         }
 
-        public bool ExcecuteCommand()
+        public void ExecuteSingleCommand()
         {
-            var result = _hidDevice.Write(_currentCommand.BytesCommand);
-
-            if (!result)
-            {
-                throw new Exception();
-            }
-
-            return false;
+            
         }
 
         public void Dispose()

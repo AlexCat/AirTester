@@ -7,12 +7,13 @@ namespace Tion.MagicAirTester.Commands
     {
         public BS310CommandResult CommandResult { get; }
 
-        public Bs310Command(int orderId, string commandName, BS310CommandResult commandResult)
+        public Bs310Command(int orderId, string commandName, int timeToExecute, BS310CommandResult commandResult)
         {
             CommandResult = commandResult;
             OrderId = orderId;
             CommandName = commandName;
             BytesCommand = ConvertToBytes(commandName);
+            TimeToExecute = timeToExecute;
         }
 
         public static byte[] ConvertToBytes(string command)

@@ -25,7 +25,7 @@ namespace Tion.MagicAirTester.Forms
             CommandExecutor<Bs310Command> commandExecutor = testersFactory.CreateBs310Tester();
             if (this.checkBox_autotest.Checked)
             {
-                commandExecutor.RunAutotest();
+                commandExecutor.StartAutotest();
             }
             
         }
