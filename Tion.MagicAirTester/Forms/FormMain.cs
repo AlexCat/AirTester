@@ -32,7 +32,13 @@ namespace Tion.MagicAirTester.Forms
             {
                 this.InvokeIfRequired(control =>
                 {
-                    _breezerState.Speed = liveParser.Parse(args.Report).Speed;
+                    var currentSpeed = liveParser.Parse(args.Report).Speed;
+                    if (currentSpeed > 0 && _breezerState.Speed != currentSpeed)
+                    {
+                        _breezerState.Speed = currentSpeed;
+                        outputService.Log(LogType.Info, $"The speed was changed to {currentSpeed}");
+                    }
+                    
                 });
             };
 

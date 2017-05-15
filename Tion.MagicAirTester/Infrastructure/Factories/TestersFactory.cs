@@ -33,7 +33,7 @@ namespace Tion.MagicAirTester.Infrastructure.Factories
                 //new Bs310Command(4, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, "4")),
                 //new Bs310Command(5, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, "5")),
                 //new Bs310Command(6, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, "6")),
-                new Bs310Command(1, "pairing 0 1", 5000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
+                //new Bs310Command(1, "pairing 0 1", 5000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
             };
             return new CommandExecutor<Bs310Command>(scenario1, new Bs310Parser<Bs310Command>(), _deviceFinderFactory.CreateBS310Finder());
         }
