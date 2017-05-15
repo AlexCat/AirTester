@@ -5,7 +5,7 @@ namespace Tion.MagicAirTester.Commands
 {
     public class Bs310Command : Command
     {
-        public BS310CommandResult CommandResult { get; }
+        public BS310CommandResult CommandResult { get; set; }
 
         public Bs310Command(int orderId, string commandName, int timeToExecute, BS310CommandResult commandResult)
         {

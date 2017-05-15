@@ -11,14 +11,19 @@ namespace Tion.MagicAirTester.Tester
     {
         public bool CheckResult(T currentCommand, List<string> data)
         {
-            string dogCsv = string.Join(",", data.ToArray());
-            if (dogCsv.Contains("help"))
+            var concreteCommand = currentCommand as Bs310Command; 
+
+            string stringifyData = string.Join(" ", data.ToArray());
+            if (concreteCommand.CommandResult.Property == Bs310CommandResultProperty.PairingWithBreezer3S)
             {
-                
+                PairingWithBreezer3SParser(concreteCommand, stringifyData);
             }
-            dogCsv.WriteToFile(@"C:\MD\OK.txt");
-            //Debug.WriteLine(data);
-            return true;
+            return false;
+        }
+
+        private void PairingWithBreezer3SParser(Bs310Command concreteCommand, string data)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary></summary>

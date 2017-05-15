@@ -18,7 +18,7 @@ namespace Tion.MagicAirTester.Forms
 {
     public partial class FormMain : Form
     {
-        public FormMain(FormFactory formFactory, TestersFactory testersFactory)
+        public FormMain(FormFactory formFactory, TestersFactory testersFactory, IOutputService outputService)
         {
             InitializeComponent();
             InitializeControls();

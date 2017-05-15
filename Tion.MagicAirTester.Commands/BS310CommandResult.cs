@@ -11,17 +11,8 @@ namespace Tion.MagicAirTester.Commands
             IsResultNeeded = true;
         }
 
-        public BS310CommandResult()
-        {
-            
-        }
         public Bs310CommandResultProperty Property { get; }
         public string Value { get; }
         public bool IsResultNeeded { get; }
-        
-        /// <summary>
-        /// Contains result of command execution
-        /// </summary>
-        public string Result { get; set; }
     }
 }
