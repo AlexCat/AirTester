@@ -47,12 +47,16 @@
             this.button_breezerSpeedUp = new System.Windows.Forms.Button();
             this.button_connectBreezer = new System.Windows.Forms.Button();
             this.output = new System.Windows.Forms.RichTextBox();
+            this.breezerInfoPanel = new System.Windows.Forms.GroupBox();
+            this.breezerSpeed = new System.Windows.Forms.Label();
+            this.breezerSpeedValue = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox_testingIndicators.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox_breezerControls.SuspendLayout();
+            this.breezerInfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -63,7 +67,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(958, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(870, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -221,19 +225,49 @@
             // 
             // output
             // 
-            this.output.Location = new System.Drawing.Point(294, 71);
+            this.output.Location = new System.Drawing.Point(297, 71);
             this.output.Name = "output";
             this.output.ReadOnly = true;
-            this.output.Size = new System.Drawing.Size(542, 272);
+            this.output.Size = new System.Drawing.Size(542, 392);
             this.output.TabIndex = 6;
             this.output.Text = "";
             this.output.TextChanged += new System.EventHandler(this.output_TextChanged);
+            // 
+            // breezerInfoPanel
+            // 
+            this.breezerInfoPanel.Controls.Add(this.breezerSpeedValue);
+            this.breezerInfoPanel.Controls.Add(this.breezerSpeed);
+            this.breezerInfoPanel.Location = new System.Drawing.Point(13, 363);
+            this.breezerInfoPanel.Name = "breezerInfoPanel";
+            this.breezerInfoPanel.Size = new System.Drawing.Size(262, 100);
+            this.breezerInfoPanel.TabIndex = 7;
+            this.breezerInfoPanel.TabStop = false;
+            this.breezerInfoPanel.Text = "Breezer Info Panel";
+            // 
+            // breezerSpeed
+            // 
+            this.breezerSpeed.AutoSize = true;
+            this.breezerSpeed.Location = new System.Drawing.Point(10, 34);
+            this.breezerSpeed.Name = "breezerSpeed";
+            this.breezerSpeed.Size = new System.Drawing.Size(45, 17);
+            this.breezerSpeed.TabIndex = 0;
+            this.breezerSpeed.Text = "Speed";
+            // 
+            // breezerSpeedValue
+            // 
+            this.breezerSpeedValue.AutoSize = true;
+            this.breezerSpeedValue.Location = new System.Drawing.Point(63, 34);
+            this.breezerSpeedValue.Name = "breezerSpeedValue";
+            this.breezerSpeedValue.Size = new System.Drawing.Size(15, 17);
+            this.breezerSpeedValue.TabIndex = 1;
+            this.breezerSpeedValue.Text = "0";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 356);
+            this.ClientSize = new System.Drawing.Size(870, 467);
+            this.Controls.Add(this.breezerInfoPanel);
             this.Controls.Add(this.output);
             this.Controls.Add(this.button_connectBreezer);
             this.Controls.Add(this.groupBox_breezerControls);
@@ -256,6 +290,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox_breezerControls.ResumeLayout(false);
+            this.breezerInfoPanel.ResumeLayout(false);
+            this.breezerInfoPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,5 +317,8 @@
         private System.Windows.Forms.Button button_breezerSpeedUp;
         private System.Windows.Forms.Button button_connectBreezer;
         private System.Windows.Forms.RichTextBox output;
+        private System.Windows.Forms.GroupBox breezerInfoPanel;
+        private System.Windows.Forms.Label breezerSpeedValue;
+        private System.Windows.Forms.Label breezerSpeed;
     }
 }

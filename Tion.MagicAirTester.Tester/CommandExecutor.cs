@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using HidLibrary;
@@ -21,6 +22,8 @@ namespace Tion.MagicAirTester.Tester
         private List<string> _currentCommandReport;
         private T _currentCommand;
         private Action<LogType, string> _outputAction;
+        public event EventHandler<DeviceFoundArgs> DeviceDataReceived;
+
 
         public CommandExecutor(IEnumerable<T> commands, IParser<T> parser, IDeviceFinder finder)
         {
@@ -43,7 +46,6 @@ namespace Tion.MagicAirTester.Tester
             _outputAction = outputAction;
             _finder.Run(device =>
             {
-                
                 _hidDevice = device;
                 _outputAction?.Invoke(LogType.Info, "MagicAir BS310 found");
                 _currentCommand = _commands.Dequeue();
@@ -62,7 +64,7 @@ namespace Tion.MagicAirTester.Tester
                 WaitExecutionCommandResult();
                 
                 _hidDevice.ReadReport(OnReportAction);
-                _outputAction?.Invoke(LogType.Info, $"Write command {_currentCommand.CommandName} ({BitConverter.ToString(_currentCommand.BytesCommand)})");
+                _outputAction?.Invoke(LogType.Info, $"Sending command \"{_currentCommand.CommandName}\" ({BitConverter.ToString(_currentCommand.BytesCommand)})");
                 _hidDevice.Write(_currentCommand.BytesCommand);
             }
         }
@@ -75,6 +77,7 @@ namespace Tion.MagicAirTester.Tester
             }
 
             var str = Encoding.ASCII.GetString(report.Data);
+            OnDeviceDataReceived(new DeviceFoundArgs() { Report = report });
             Debug.WriteLine(str);
             _currentCommandReport.Add(str);
             _hidDevice.ReadReport(OnReportAction);
@@ -104,25 +107,43 @@ namespace Tion.MagicAirTester.Tester
             
         }
 
+        protected virtual void OnDeviceDataReceived(DeviceFoundArgs e)
+        {
+            DeviceDataReceived?.Invoke(this, e);
+        }
+
+        bool disposed = false;
+
+        // Public implementation of Dispose pattern callable by consumers.
         public void Dispose()
         {
-            _hidDevice?.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Free any other managed objects here.
+                if (_hidDevice != null)
+                {
+                    _hidDevice = null;
+                }
+            }
+
+            // Free any unmanaged objects here.
+            //
+            disposed = true;
         }
     }
 
-    public static class Strings
+    public class DeviceFoundArgs : EventArgs
     {
-        /// <summary>
-        /// Extension method to write the string Str to a file
-        /// </summary>
-        /// <param name="Str"></param>
-        /// <param name="Filename"></param>
-        public static void WriteToFile(this string Str, string Filename)
-        {
-            File.WriteAllText(Filename, Str);
-            return;
-        }
-
-        // of course you could add other useful string methods...
+        public HidReport Report { get; set; }
     }
 }

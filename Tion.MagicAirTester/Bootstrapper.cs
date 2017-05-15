@@ -5,6 +5,7 @@ using Tion.MagicAirTester.Contracts;
 using Tion.MagicAirTester.DeviceFinder;
 using Tion.MagicAirTester.Infrastructure.Factories;
 using Tion.MagicAirTester.Infrastructure.Services;
+using Tion.MagicAirTester.Tester;
 
 namespace Tion.MagicAirTester {
 
@@ -23,6 +24,7 @@ namespace Tion.MagicAirTester {
             builder.RegisterType<DeviceFinderFactory>().AsSelf().SingleInstance();
             builder.RegisterType<TestersFactory>().AsSelf().SingleInstance();
             builder.RegisterType<BS310DeviceFinder>().As<IDeviceFinder>();
+            builder.RegisterType<LiveBS310Parser>().As<ILiveParser>();
 
             return builder.Build();
         }

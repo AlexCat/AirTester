@@ -11,19 +11,22 @@ namespace Tion.DeviceTester.Infrastructure.Factories {
         private readonly TestersFactory _testersFactory;
 
         private readonly IOutputService _outputService;
+
+        private readonly ILiveParser _liveParser;
         //private readonly ILocalizationService _localizationService;
         //private readonly AppTimer _timer;
         //private readonly IOutputService _outputService;
         //private readonly IEnumerable<IDevice> _devices;
 
-        public FormFactory(TestersFactory testersFactory, IOutputService outputService)
+        public FormFactory(TestersFactory testersFactory, IOutputService outputService, ILiveParser liveParser)
         {
             _testersFactory = testersFactory;
             _outputService = outputService;
+            _liveParser = liveParser;
         }
 
         public FormMain CreateMainForm() {
-            return new FormMain(this, _testersFactory, _outputService);
+            return new FormMain(this, _testersFactory, _outputService, _liveParser);
         }
     }
 }

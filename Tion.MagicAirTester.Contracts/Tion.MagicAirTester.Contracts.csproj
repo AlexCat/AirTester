@@ -45,8 +45,10 @@
   <ItemGroup>
     <Compile Include="DeviceFindEventArgs.cs" />
     <Compile Include="IDeviceFinder.cs" />
+    <Compile Include="ILiveParser.cs" />
     <Compile Include="IOutputService.cs" />
     <Compile Include="IParser.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

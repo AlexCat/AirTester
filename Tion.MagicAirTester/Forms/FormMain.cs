@@ -20,24 +20,32 @@ namespace Tion.MagicAirTester.Forms
     public partial class FormMain : Form
     {
         private readonly IOutputService _outputService;
+        private IBreezerState _breezerState = new BreezerState();
 
-        public FormMain(FormFactory formFactory, TestersFactory testersFactory, IOutputService outputService)
+        public FormMain(FormFactory formFactory, TestersFactory testersFactory, IOutputService outputService, ILiveParser liveParser)
         {
             _outputService = outputService;
             InitializeComponent();
             InitializeControls();
             CommandExecutor<Bs310Command> commandExecutor = testersFactory.CreateBs310Tester();
-            if (this.checkBox_autotest.Checked)
+            commandExecutor.DeviceDataReceived += (sender, args) =>
             {
-                commandExecutor.StartAutotest((x, y) =>
+                this.InvokeIfRequired(control =>
                 {
-                    this.InvokeIfRequired(c =>
-                    {
-                        _outputService.Log(x, y);
-                    });
+                    _breezerState.Speed = liveParser.Parse(args.Report).Speed;
                 });
-            }
+            };
+
+            commandExecutor.StartAutotest((logType, message) =>
+            {
+                this.InvokeIfRequired(control =>
+                {
+                    _outputService.Log(logType, message);
+                });
+            });
             
+
+
         }
 
         private void button_magicAirFind_Click(object sender, EventArgs e)
@@ -59,6 +67,7 @@ namespace Tion.MagicAirTester.Forms
             _outputService.Log(LogType.Info, "Initializing...");
             checkBox_autotest_CheckedChanged(null, null);
             output.DataBindings.Add("Text", _outputService, "Data", true, DataSourceUpdateMode.OnPropertyChanged);
+            breezerSpeedValue.DataBindings.Add("Text", _breezerState, "Speed", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void output_TextChanged(object sender, EventArgs e)
