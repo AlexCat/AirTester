@@ -24,7 +24,6 @@ namespace Tion.MagicAirTester.Tester
         private Action<LogType, string> _outputAction;
         public event EventHandler<DeviceFoundArgs> DeviceDataReceived;
 
-
         public CommandExecutor(IEnumerable<T> commands, IParser<T> parser, IDeviceFinder finder)
         {
             _commands = new Queue<T>(commands.OrderBy(x => x.OrderId));
@@ -32,23 +31,16 @@ namespace Tion.MagicAirTester.Tester
             _finder = finder;
         }
 
-
-        public static byte[] ConvertToBytes(string command)
-        {
-            var bytesCommand = Encoding.ASCII.GetBytes(command).ToList();
-            bytesCommand.Insert(0, 0x0A);
-            bytesCommand.Insert(bytesCommand.Count, 0x0D);
-            return bytesCommand.ToArray();
-        }
-
         public void StartAutotest(Action<LogType, string> outputAction)
         {
             _outputAction = outputAction;
+            _outputAction?.Invoke(LogType.Info, "Finding MagicAir BS310...");
             _finder.Run(device =>
             {
                 _hidDevice = device;
                 _outputAction?.Invoke(LogType.Info, "MagicAir BS310 found");
                 _currentCommand = _commands.Dequeue();
+                _outputAction?.Invoke(LogType.Info, "Automatic test started...");
                 ExecuteAutoCommand();
             });
         }
@@ -64,7 +56,7 @@ namespace Tion.MagicAirTester.Tester
                 WaitExecutionCommandResult();
                 
                 _hidDevice.ReadReport(OnReportAction);
-                _outputAction?.Invoke(LogType.Info, $"Sending command \"{_currentCommand.CommandName}\" ({BitConverter.ToString(_currentCommand.BytesCommand)})");
+                _outputAction?.Invoke(LogType.Info, $"Send command \"{_currentCommand.CommandName}\" ({BitConverter.ToString(_currentCommand.BytesCommand)})");
                 _hidDevice.Write(_currentCommand.BytesCommand);
             }
         }
@@ -130,6 +122,7 @@ namespace Tion.MagicAirTester.Tester
             if (disposing)
             {
                 // Free any other managed objects here.
+                // ReSharper disable once RedundantCheckBeforeAssignment
                 if (_hidDevice != null)
                 {
                     _hidDevice = null;
@@ -139,6 +132,19 @@ namespace Tion.MagicAirTester.Tester
             // Free any unmanaged objects here.
             //
             disposed = true;
+        }
+
+        public void ExecuteSingleCommand(T command, Action onCommandExecuteAction)
+        {
+            _currentCommand =  command;
+
+            var timer = new Timer(_currentCommand.TimeToExecute);
+            timer.Elapsed += (sender, args) =>
+            {
+                timer.Stop();
+                onCommandExecuteAction();
+            };
+            timer.Start();
         }
     }
 

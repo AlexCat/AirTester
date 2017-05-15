@@ -180,6 +180,7 @@
             this.groupBox_breezerControls.Controls.Add(this.button_unpairBreezer);
             this.groupBox_breezerControls.Controls.Add(this.button_breezerSpeedDown);
             this.groupBox_breezerControls.Controls.Add(this.button_breezerSpeedUp);
+            this.groupBox_breezerControls.Enabled = false;
             this.groupBox_breezerControls.Location = new System.Drawing.Point(11, 243);
             this.groupBox_breezerControls.Name = "groupBox_breezerControls";
             this.groupBox_breezerControls.Size = new System.Drawing.Size(262, 100);
@@ -213,9 +214,12 @@
             this.button_breezerSpeedUp.TabIndex = 0;
             this.button_breezerSpeedUp.Text = "Speed Up";
             this.button_breezerSpeedUp.UseVisualStyleBackColor = true;
+            this.button_breezerSpeedUp.Click += new System.EventHandler(this.button_breezerSpeedUp_Click);
             // 
             // button_connectBreezer
             // 
+            this.button_connectBreezer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button_connectBreezer.Enabled = false;
             this.button_connectBreezer.Location = new System.Drawing.Point(150, 71);
             this.button_connectBreezer.Name = "button_connectBreezer";
             this.button_connectBreezer.Size = new System.Drawing.Size(125, 29);

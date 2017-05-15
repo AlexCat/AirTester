@@ -9,12 +9,14 @@ namespace Tion.MagicAirTester.Tester
     /// <summary></summary>
     public class Bs310Parser<T>: IParser<T> where T: Command
     {
+        private readonly ILiveParser _liveParser;
+
         public bool CheckResult(T currentCommand, List<string> data)
         {
             var concreteCommand = currentCommand as Bs310Command; 
 
             string stringifyData = string.Join(" ", data.ToArray());
-            if (concreteCommand.CommandResult.Property == Bs310CommandResultProperty.PairingWithBreezer3S)
+            if (concreteCommand.CommandResult.Property == Bs310CommandResultProperty.Speed)
             {
                 PairingWithBreezer3SParser(concreteCommand, stringifyData);
             }
@@ -23,6 +25,8 @@ namespace Tion.MagicAirTester.Tester
 
         private void PairingWithBreezer3SParser(Bs310Command concreteCommand, string data)
         {
+            var index = data.LastIndexOf("SpR=");
+            var dataToParse = data.Substring(index);
             throw new System.NotImplementedException();
         }
 
