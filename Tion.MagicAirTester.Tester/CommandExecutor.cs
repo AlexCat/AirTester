@@ -23,6 +23,7 @@ namespace Tion.MagicAirTester.Tester
         private T _currentCommand;
         private Action<LogType, string> _outputAction;
         public event EventHandler<DeviceFoundArgs> DeviceDataReceived;
+        public event EventHandler DeviceFound;
 
         public CommandExecutor(IEnumerable<T> commands, IParser<T> parser, IDeviceFinder finder)
         {
@@ -31,18 +32,30 @@ namespace Tion.MagicAirTester.Tester
             _finder = finder;
         }
 
-        public void StartAutotest(Action<LogType, string> outputAction)
+        public void StartAutotest()
+        {
+            _outputAction?.Invoke(LogType.Info, "Automatic test started...");
+            ExecuteAutoCommand();
+        }
+
+        public void Start(Action<LogType, string> outputAction)
         {
             _outputAction = outputAction;
             _outputAction?.Invoke(LogType.Info, "Finding MagicAir BS310...");
+            var timer = new Timer(7000);
+            timer.Elapsed += (sender, args) =>
+            {
+                timer.Stop();
+                _outputAction?.Invoke(LogType.Info, "MagicAir BS310 not found");
+            };
             _finder.Run(device =>
             {
+                timer.Stop();
                 _hidDevice = device;
+                OnDeviceFound();
                 _outputAction?.Invoke(LogType.Info, "MagicAir BS310 found");
-                _currentCommand = _commands.Dequeue();
-                _outputAction?.Invoke(LogType.Info, "Automatic test started...");
-                ExecuteAutoCommand();
             });
+            timer.Start();
         }
 
         private void ExecuteAutoCommand()
@@ -145,6 +158,11 @@ namespace Tion.MagicAirTester.Tester
                 onCommandExecuteAction();
             };
             timer.Start();
+        }
+
+        protected virtual void OnDeviceFound()
+        {
+            DeviceFound?.Invoke(this, EventArgs.Empty);
         }
     }
 

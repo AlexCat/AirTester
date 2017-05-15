@@ -17,11 +17,23 @@ namespace Tion.MagicAirTester.Contracts
     public interface IBreezerState
     {
         int Speed { get; set; }
+        bool IsConnected { get; set; }
+    }
+
+    public interface IMagicAirState
+    {
+        bool isFound { get; set; }
+    }
+
+    public class MagicAirState : IMagicAirState
+    {
+        public bool isFound { get; set; }
     }
 
     public class BreezerState : IBreezerState, INotifyPropertyChanged
     {
         private int _speed;
+        private bool _isConnected;
 
         public int Speed
         {
@@ -32,6 +44,19 @@ namespace Tion.MagicAirTester.Contracts
                 {
                     _speed = value;
                     OnPropertyChanged(nameof(Speed));
+                }
+            }
+        }
+
+        public bool IsConnected
+        {
+            get { return _isConnected; }
+            set
+            {
+                if (value != _isConnected)
+                {
+                    _isConnected = value;
+                    OnPropertyChanged(nameof(IsConnected));
                 }
             }
         }

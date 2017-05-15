@@ -48,8 +48,10 @@
             this.button_connectBreezer = new System.Windows.Forms.Button();
             this.output = new System.Windows.Forms.RichTextBox();
             this.breezerInfoPanel = new System.Windows.Forms.GroupBox();
-            this.breezerSpeed = new System.Windows.Forms.Label();
             this.breezerSpeedValue = new System.Windows.Forms.Label();
+            this.breezerSpeed = new System.Windows.Forms.Label();
+            this.breezerIsConnected = new System.Windows.Forms.Label();
+            this.breezerIsConnectedValue = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox_testingIndicators.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -239,6 +241,8 @@
             // 
             // breezerInfoPanel
             // 
+            this.breezerInfoPanel.Controls.Add(this.breezerIsConnectedValue);
+            this.breezerInfoPanel.Controls.Add(this.breezerIsConnected);
             this.breezerInfoPanel.Controls.Add(this.breezerSpeedValue);
             this.breezerInfoPanel.Controls.Add(this.breezerSpeed);
             this.breezerInfoPanel.Location = new System.Drawing.Point(13, 363);
@@ -248,23 +252,41 @@
             this.breezerInfoPanel.TabStop = false;
             this.breezerInfoPanel.Text = "Breezer Info Panel";
             // 
+            // breezerSpeedValue
+            // 
+            this.breezerSpeedValue.AutoSize = true;
+            this.breezerSpeedValue.Location = new System.Drawing.Point(81, 45);
+            this.breezerSpeedValue.Name = "breezerSpeedValue";
+            this.breezerSpeedValue.Size = new System.Drawing.Size(15, 17);
+            this.breezerSpeedValue.TabIndex = 1;
+            this.breezerSpeedValue.Text = "0";
+            // 
             // breezerSpeed
             // 
             this.breezerSpeed.AutoSize = true;
-            this.breezerSpeed.Location = new System.Drawing.Point(10, 34);
+            this.breezerSpeed.Location = new System.Drawing.Point(10, 45);
             this.breezerSpeed.Name = "breezerSpeed";
             this.breezerSpeed.Size = new System.Drawing.Size(45, 17);
             this.breezerSpeed.TabIndex = 0;
             this.breezerSpeed.Text = "Speed";
             // 
-            // breezerSpeedValue
+            // breezerIsConnected
             // 
-            this.breezerSpeedValue.AutoSize = true;
-            this.breezerSpeedValue.Location = new System.Drawing.Point(63, 34);
-            this.breezerSpeedValue.Name = "breezerSpeedValue";
-            this.breezerSpeedValue.Size = new System.Drawing.Size(15, 17);
-            this.breezerSpeedValue.TabIndex = 1;
-            this.breezerSpeedValue.Text = "0";
+            this.breezerIsConnected.AutoSize = true;
+            this.breezerIsConnected.Location = new System.Drawing.Point(9, 28);
+            this.breezerIsConnected.Name = "breezerIsConnected";
+            this.breezerIsConnected.Size = new System.Drawing.Size(70, 17);
+            this.breezerIsConnected.TabIndex = 2;
+            this.breezerIsConnected.Text = "Connected";
+            // 
+            // breezerIsConnectedValue
+            // 
+            this.breezerIsConnectedValue.AutoSize = true;
+            this.breezerIsConnectedValue.Location = new System.Drawing.Point(82, 28);
+            this.breezerIsConnectedValue.Name = "breezerIsConnectedValue";
+            this.breezerIsConnectedValue.Size = new System.Drawing.Size(35, 17);
+            this.breezerIsConnectedValue.TabIndex = 3;
+            this.breezerIsConnectedValue.Text = "false";
             // 
             // FormMain
             // 
@@ -324,5 +346,7 @@
         private System.Windows.Forms.GroupBox breezerInfoPanel;
         private System.Windows.Forms.Label breezerSpeedValue;
         private System.Windows.Forms.Label breezerSpeed;
+        private System.Windows.Forms.Label breezerIsConnectedValue;
+        private System.Windows.Forms.Label breezerIsConnected;
     }
 }
