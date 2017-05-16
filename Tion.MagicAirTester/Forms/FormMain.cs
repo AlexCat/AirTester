@@ -43,15 +43,16 @@ namespace Tion.MagicAirTester.Forms
             _outputService.Clear();
         }
 
-        private void InitializeNewCommandExecutor()
+        private void InitializeNewMagicAirDevice()
         {
             ResetFormState();
 
-            _magicAirState = new MagicAirState();
-            _breezerState = new BreezerState();
+            _magicAirState.ClearState();
+            _breezerState.ClearState();
 
             _commandExecutor = _testersFactory.CreateBs310Tester();
-            _commandExecutor.DeviceDataReceived += OnBreezerConnected;
+
+            _commandExecutor.DeviceDataReceived += OnLiveDataReceivedStarted;
             _commandExecutor.DeviceFound += OnMagicAirFound;
         }
 
@@ -60,22 +61,34 @@ namespace Tion.MagicAirTester.Forms
             this.InvokeIfRequired(control =>
             {
                 _magicAirState.isFound = true;
+
                 this.button_connectBreezer.Enabled = true;
+
                 if (this.checkBox_autotest.Checked)
                 {
-                    _outputService.Log(LogType.Info, "Autotest started");
                     _commandExecutor.StartAutotest();
                 }
             });
         }
 
-        private void OnBreezerConnected(object o, DeviceFoundArgs deviceFoundArgs)
+        private void OnLiveDataReceivedStarted(object o, DeviceFoundArgs deviceFoundArgs)
         {
             this.InvokeIfRequired(control =>
             {
-                this.groupBox_breezerControls.Enabled = true;
-                _breezerState.IsConnected = true;
+                // breezer connecting state parsing
+                var isBreezerConnected = _liveParser.Parse(deviceFoundArgs.Report).IsConnected;
+                if (isBreezerConnected)
+                {
+                    if (!_breezerState.IsConnected)
+                    {
+                        _outputService.Log(LogType.Info, $"Breezer connected");
+                    }
+                    this.groupBox_breezerControls.Enabled = true;
+                    this.button_connectBreezer.Enabled = false;
+                    _breezerState.IsConnected = true;
+                }
 
+                // breezer speed parsing
                 var currentSpeed = _liveParser.Parse(deviceFoundArgs.Report).Speed;
                 if (currentSpeed > 0 && _breezerState.Speed != currentSpeed)
                 {
@@ -87,7 +100,7 @@ namespace Tion.MagicAirTester.Forms
 
         private void button_magicAirFind_Click(object sender, EventArgs e)
         {
-            InitializeNewCommandExecutor();
+            InitializeNewMagicAirDevice();
             _commandExecutor.Start((logType, message) =>
             {
                 this.InvokeIfRequired(control =>
@@ -133,9 +146,46 @@ namespace Tion.MagicAirTester.Forms
 
         private void button_breezerSpeedUp_Click(object sender, EventArgs e)
         {
+            ChangeSpeed(true);
+        }
+
+        private void button_connectBreezer_Click(object sender, EventArgs e)
+        {
+            _outputService.Log(LogType.Info, "Searching breezer...");
+            _commandExecutor.ExecuteSingleCommand(
+                new Bs310Command(1, "pairing 0 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")), () => {});
+        }
+
+        private void button_unpairBreezer_Click(object sender, EventArgs e)
+        {
+            this.groupBox_breezerControls.Enabled = false;
+            
+            _outputService.Log(LogType.Info, "Deleting breezer...");
+            _commandExecutor.ExecuteSingleCommand(
+                new Bs310Command(1, "deldev 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
+                () =>
+                {
+                    this.InvokeIfRequired(c =>
+                    {
+                        this.button_connectBreezer.Enabled = true;
+                        _outputService.Log(LogType.Info, "Breezer deleted");
+                        _breezerState.ClearState();
+                    });
+                });
+        }
+
+        private void button_breezerSpeedDown_Click(object sender, EventArgs e)
+        {
+            ChangeSpeed(false);
+        }
+
+        private void ChangeSpeed(bool speedUp)
+        {
+            _outputService.Log(LogType.Info, $"Change speed trying...");
+            var stringCommand = speedUp ? "upvent 1" : "dwnvent 1";
             var prevSpeed = _breezerState.Speed;
             _commandExecutor.ExecuteSingleCommand(
-                new Bs310Command(0, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, "0")),
+                new Bs310Command(0, stringCommand, 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, "0")),
                 () =>
                 {
                     var msg = prevSpeed != _breezerState.Speed

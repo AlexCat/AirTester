@@ -16,12 +16,22 @@ namespace Tion.MagicAirTester.Tester
         public IBreezerState Parse(HidReport data)
         {
             var str = Encoding.ASCII.GetString(data.Data);
-            return ParseState(str);
+            return ParseData(str);
         }
 
-        private BreezerState ParseState(string data)
+        private BreezerState ParseData(string data)
         {
             var breezer = new BreezerState();
+
+            // is connected
+            Regex isConnectedReg = new Regex("br 2");
+            var isConnectedRegResult = isConnectedReg.Match(data);
+            if (isConnectedRegResult.Success)
+            {
+                breezer.IsConnected = true;
+            }
+
+            // speed
             Regex speedReg = new Regex("SpR=\\d+");
             var res = speedReg.Match(data);
             if (res.Success)
@@ -29,6 +39,7 @@ namespace Tion.MagicAirTester.Tester
                 var speedStr = res.Value.Split(new char[] {'='}, StringSplitOptions.RemoveEmptyEntries)[1];
                 breezer.Speed = Int32.Parse(speedStr);
             }
+
             return breezer;
         }
     }

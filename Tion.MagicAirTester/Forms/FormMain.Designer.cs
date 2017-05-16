@@ -48,10 +48,10 @@
             this.button_connectBreezer = new System.Windows.Forms.Button();
             this.output = new System.Windows.Forms.RichTextBox();
             this.breezerInfoPanel = new System.Windows.Forms.GroupBox();
+            this.breezerIsConnectedValue = new System.Windows.Forms.Label();
+            this.breezerIsConnected = new System.Windows.Forms.Label();
             this.breezerSpeedValue = new System.Windows.Forms.Label();
             this.breezerSpeed = new System.Windows.Forms.Label();
-            this.breezerIsConnected = new System.Windows.Forms.Label();
-            this.breezerIsConnectedValue = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox_testingIndicators.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -198,6 +198,7 @@
             this.button_unpairBreezer.TabIndex = 2;
             this.button_unpairBreezer.Text = "Unpair Breezer";
             this.button_unpairBreezer.UseVisualStyleBackColor = true;
+            this.button_unpairBreezer.Click += new System.EventHandler(this.button_unpairBreezer_Click);
             // 
             // button_breezerSpeedDown
             // 
@@ -207,6 +208,7 @@
             this.button_breezerSpeedDown.TabIndex = 1;
             this.button_breezerSpeedDown.Text = "Speed Down";
             this.button_breezerSpeedDown.UseVisualStyleBackColor = true;
+            this.button_breezerSpeedDown.Click += new System.EventHandler(this.button_breezerSpeedDown_Click);
             // 
             // button_breezerSpeedUp
             // 
@@ -228,6 +230,7 @@
             this.button_connectBreezer.TabIndex = 5;
             this.button_connectBreezer.Text = "Connect Breezer";
             this.button_connectBreezer.UseVisualStyleBackColor = true;
+            this.button_connectBreezer.Click += new System.EventHandler(this.button_connectBreezer_Click);
             // 
             // output
             // 
@@ -252,6 +255,24 @@
             this.breezerInfoPanel.TabStop = false;
             this.breezerInfoPanel.Text = "Breezer Info Panel";
             // 
+            // breezerIsConnectedValue
+            // 
+            this.breezerIsConnectedValue.AutoSize = true;
+            this.breezerIsConnectedValue.Location = new System.Drawing.Point(82, 28);
+            this.breezerIsConnectedValue.Name = "breezerIsConnectedValue";
+            this.breezerIsConnectedValue.Size = new System.Drawing.Size(35, 17);
+            this.breezerIsConnectedValue.TabIndex = 3;
+            this.breezerIsConnectedValue.Text = "false";
+            // 
+            // breezerIsConnected
+            // 
+            this.breezerIsConnected.AutoSize = true;
+            this.breezerIsConnected.Location = new System.Drawing.Point(9, 28);
+            this.breezerIsConnected.Name = "breezerIsConnected";
+            this.breezerIsConnected.Size = new System.Drawing.Size(70, 17);
+            this.breezerIsConnected.TabIndex = 2;
+            this.breezerIsConnected.Text = "Connected";
+            // 
             // breezerSpeedValue
             // 
             this.breezerSpeedValue.AutoSize = true;
@@ -269,24 +290,6 @@
             this.breezerSpeed.Size = new System.Drawing.Size(45, 17);
             this.breezerSpeed.TabIndex = 0;
             this.breezerSpeed.Text = "Speed";
-            // 
-            // breezerIsConnected
-            // 
-            this.breezerIsConnected.AutoSize = true;
-            this.breezerIsConnected.Location = new System.Drawing.Point(9, 28);
-            this.breezerIsConnected.Name = "breezerIsConnected";
-            this.breezerIsConnected.Size = new System.Drawing.Size(70, 17);
-            this.breezerIsConnected.TabIndex = 2;
-            this.breezerIsConnected.Text = "Connected";
-            // 
-            // breezerIsConnectedValue
-            // 
-            this.breezerIsConnectedValue.AutoSize = true;
-            this.breezerIsConnectedValue.Location = new System.Drawing.Point(82, 28);
-            this.breezerIsConnectedValue.Name = "breezerIsConnectedValue";
-            this.breezerIsConnectedValue.Size = new System.Drawing.Size(35, 17);
-            this.breezerIsConnectedValue.TabIndex = 3;
-            this.breezerIsConnectedValue.Text = "false";
             // 
             // FormMain
             // 

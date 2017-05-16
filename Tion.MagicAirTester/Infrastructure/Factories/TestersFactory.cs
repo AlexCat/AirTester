@@ -24,13 +24,13 @@ namespace Tion.MagicAirTester.Infrastructure.Factories
         {
             var scenario1 = new List<Bs310Command>()
             {
-                //new Bs310Command(1, "pairing 0 1", 5000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
-                new Bs310Command(0, "upvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "4")),
-                new Bs310Command(1, "upvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "5")),
-                new Bs310Command(2, "upvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
-                new Bs310Command(3, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "5")),
-                new Bs310Command(4, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "4")),
-                new Bs310Command(5, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "3"))
+                new Bs310Command(1, "pairing 0 1", 5000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
+                //new Bs310Command(0, "upvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "4")),
+                //new Bs310Command(1, "upvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "5")),
+                //new Bs310Command(2, "upvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
+                //new Bs310Command(3, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "5")),
+                //new Bs310Command(4, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "4")),
+                //new Bs310Command(5, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "3"))
             };
             return new CommandExecutor<Bs310Command>(scenario1, new Bs310Parser<Bs310Command>(), _deviceFinderFactory.CreateBS310Finder());
         }

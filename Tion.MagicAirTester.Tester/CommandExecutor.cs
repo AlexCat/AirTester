@@ -35,6 +35,7 @@ namespace Tion.MagicAirTester.Tester
         public void StartAutotest()
         {
             _outputAction?.Invoke(LogType.Info, "Automatic test started...");
+            _currentCommand = _commands.Dequeue();
             ExecuteAutoCommand();
         }
 
@@ -52,8 +53,8 @@ namespace Tion.MagicAirTester.Tester
             {
                 timer.Stop();
                 _hidDevice = device;
-                OnDeviceFound();
                 _outputAction?.Invoke(LogType.Info, "MagicAir BS310 found");
+                OnDeviceFound();
             });
             timer.Start();
         }
@@ -140,6 +141,12 @@ namespace Tion.MagicAirTester.Tester
                 {
                     _hidDevice = null;
                 }
+
+                if (DeviceDataReceived != null || DeviceFound != null)
+                {
+                    DeviceDataReceived = null;
+                    DeviceFound = null;
+                }
             }
 
             // Free any unmanaged objects here.
@@ -150,11 +157,14 @@ namespace Tion.MagicAirTester.Tester
         public void ExecuteSingleCommand(T command, Action onCommandExecuteAction)
         {
             _currentCommand =  command;
+            _hidDevice.Write(_currentCommand.BytesCommand);
 
             var timer = new Timer(_currentCommand.TimeToExecute);
             timer.Elapsed += (sender, args) =>
             {
                 timer.Stop();
+                
+                _currentCommand = null;
                 onCommandExecuteAction();
             };
             timer.Start();
