@@ -8,7 +8,7 @@ namespace Tion.DeviceTester.Infrastructure.Factories {
     /// Forms factory
     /// </summary>
     public class FormFactory {
-        private readonly TestersFactory _testersFactory;
+        private readonly ExecutorsFactory _executorsFactory;
 
         private readonly IOutputService _outputService;
 
@@ -18,15 +18,15 @@ namespace Tion.DeviceTester.Infrastructure.Factories {
         //private readonly IOutputService _outputService;
         //private readonly IEnumerable<IDevice> _devices;
 
-        public FormFactory(TestersFactory testersFactory, IOutputService outputService, ILiveParser liveParser)
+        public FormFactory(ExecutorsFactory executorsFactory, IOutputService outputService, ILiveParser liveParser)
         {
-            _testersFactory = testersFactory;
+            _executorsFactory = executorsFactory;
             _outputService = outputService;
             _liveParser = liveParser;
         }
 
         public FormMain CreateMainForm() {
-            return new FormMain(this, _testersFactory, _outputService, _liveParser);
+            return new FormMain(this, _executorsFactory, _outputService, _liveParser);
         }
     }
 }

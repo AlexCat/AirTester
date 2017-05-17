@@ -64,7 +64,7 @@
     <Compile Include="Infrastructure\ControlExtensions.cs" />
     <Compile Include="Infrastructure\Factories\DeviceFinderFactory.cs" />
     <Compile Include="Infrastructure\Factories\FormFactory.cs" />
-    <Compile Include="Infrastructure\Factories\TestersFactory.cs" />
+    <Compile Include="Infrastructure\Factories\ExecutorsFactory.cs" />
     <Compile Include="Infrastructure\Services\OutputService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />

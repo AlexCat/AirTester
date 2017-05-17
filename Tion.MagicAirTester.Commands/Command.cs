@@ -9,5 +9,6 @@
         /// Waiting time to collect data after command executes
         /// </summary>
         public int TimeToExecute { get; set; }
+        public CommandResult CommandResult { get; set; }
     }
 }

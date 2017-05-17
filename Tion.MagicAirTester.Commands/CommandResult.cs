@@ -5,6 +5,9 @@ namespace Tion.MagicAirTester.Commands
         /// <summary>
         /// Contains result of command execution
         /// </summary>
-        public string Result { get; set; }
+        public bool Ok { get; set; }
+
+        public Bs310CommandResultProperty Property { get; protected set; }
+        public object Value { get; protected set; }
     }
 }

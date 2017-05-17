@@ -2,6 +2,6 @@
 {
     public enum Bs310CommandResultProperty
     {
-        Speed, PairingWithBreezer3S
+        Logenable, Speed, PairingWithBreezer3S
     }
 }

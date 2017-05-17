@@ -22,7 +22,7 @@ namespace Tion.MagicAirTester {
             //builder.RegisterType<FormAbout>().AsSelf().SingleInstance();
             builder.RegisterType<FormFactory>().AsSelf().SingleInstance();
             builder.RegisterType<DeviceFinderFactory>().AsSelf().SingleInstance();
-            builder.RegisterType<TestersFactory>().AsSelf().SingleInstance();
+            builder.RegisterType<ExecutorsFactory>().AsSelf().SingleInstance();
             builder.RegisterType<BS310DeviceFinder>().As<IDeviceFinder>();
             builder.RegisterType<LiveBS310Parser>().As<ILiveParser>();
 

@@ -1,41 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
+using System.Timers;
 using HidLibrary;
 using Tion.MagicAirTester.Commands;
 using Tion.MagicAirTester.Contracts;
-using Timer = System.Timers.Timer;
+using System.Threading;
+
 
 namespace Tion.MagicAirTester.Tester
 {
     public class CommandExecutor<T> : IDisposable where T : Command
     {
         private readonly Queue<T> _commands;
-        private readonly IParser<T> _parser;
         private readonly IDeviceFinder _finder;
+        private readonly IBreezerState _breezerState;
+        private readonly AppTimer _appTimer;
         private IHidDevice _hidDevice;
-        private List<string> _currentCommandReport;
         private T _currentCommand;
+        private List<Command> _autoCommandsResult;
         private Action<LogType, string> _outputAction;
         public event EventHandler<DeviceFoundArgs> DeviceDataReceived;
         public event EventHandler DeviceFound;
+        public event EventHandler<AutocommandsResult> TestFinished;
+        
 
-        public CommandExecutor(IEnumerable<T> commands, IParser<T> parser, IDeviceFinder finder)
+        public CommandExecutor(IEnumerable<T> commands, IDeviceFinder finder, IBreezerState breezerState, AppTimer appTimer)
         {
             _commands = new Queue<T>(commands.OrderBy(x => x.OrderId));
-            _parser = parser;
             _finder = finder;
+            _breezerState = breezerState;
+            _appTimer = appTimer;
         }
 
         public void StartAutotest()
         {
             _outputAction?.Invoke(LogType.Info, "Automatic test started...");
-            _currentCommand = _commands.Dequeue();
+            _autoCommandsResult = new List<Command>();
+
             ExecuteAutoCommand();
         }
 
@@ -55,62 +58,70 @@ namespace Tion.MagicAirTester.Tester
                 _hidDevice = device;
                 _outputAction?.Invoke(LogType.Info, "MagicAir BS310 found");
                 OnDeviceFound();
+
+                // Permanent reading for state refresh
+                _hidDevice.ReadReport(OnMagicAirFindAction);
             });
             timer.Start();
         }
 
         private void ExecuteAutoCommand()
         {
-            if (_currentCommand != null)
-            {
-                _hidDevice.OpenDevice();
-                _hidDevice.MonitorDeviceEvents = true;
+            _currentCommand = _commands.Dequeue();
 
-                _currentCommandReport = new List<string>();
-                WaitExecutionCommandResult();
-                
-                _hidDevice.ReadReport(OnReportAction);
-                _outputAction?.Invoke(LogType.Info, $"Send command \"{_currentCommand.CommandName}\" ({BitConverter.ToString(_currentCommand.BytesCommand)})");
-                _hidDevice.Write(_currentCommand.BytesCommand);
+            _hidDevice.OpenDevice();
+            _hidDevice.MonitorDeviceEvents = true;
+
+            _outputAction?.Invoke(LogType.Info, $"Send command \"{_currentCommand.CommandName}\" ({BitConverter.ToString(_currentCommand.BytesCommand)})");
+
+            _hidDevice.Write(_currentCommand.BytesCommand);
+            WaitExecutionCommandResult(); 
+        }
+
+        private void WaitExecutionCommandResult()
+        {
+            _appTimer.Initialize(_currentCommand.TimeToExecute);
+
+            _appTimer.TimerComplete += OnTimerComplete;
+            _appTimer.Start();
+        }
+
+        private void OnTimerComplete(object o, EventArgs elapsedEventArgs)
+        {
+            _appTimer.Stop();
+            _appTimer.TimerComplete -= OnTimerComplete;
+
+            _hidDevice.CloseDevice();
+
+            Debug.WriteLine($"{DateTime.Now} {_currentCommand.OrderId}");
+
+            // check
+            if (_currentCommand.CommandResult.Property == Bs310CommandResultProperty.Speed)
+            {
+                _currentCommand.CommandResult.Ok = Convert.ToInt32(_currentCommand.CommandResult.Value) == _breezerState.Speed;
+            }
+            _autoCommandsResult.Add(_currentCommand);
+            // end check
+
+            if (_commands.Any())
+            {
+                ExecuteAutoCommand();
+            }
+            else
+            {
+                OnTestFinished(_autoCommandsResult);
             }
         }
 
-        private void OnReportAction(HidReport report)
+        private void OnMagicAirFindAction(HidReport report)
         {
             if (!_hidDevice.IsConnected)
             {
                 throw new Exception();
             }
 
-            var str = Encoding.ASCII.GetString(report.Data);
             OnDeviceDataReceived(new DeviceFoundArgs() { Report = report });
-            Debug.WriteLine(str);
-            _currentCommandReport.Add(str);
-            _hidDevice.ReadReport(OnReportAction);
-        }
-
-        private void WaitExecutionCommandResult()
-        {
-            var timer = new Timer(_currentCommand.TimeToExecute);
-            timer.Elapsed += (sender, args) =>
-            {
-                timer.Stop();
-                _hidDevice.CloseDevice();
-                _parser.CheckResult(_currentCommand, _currentCommandReport);
-
-                if (_commands.Any())
-                {
-                    _currentCommand = _commands.Dequeue();
-                    ExecuteAutoCommand();
-                    timer.Start();
-                }
-            };
-            timer.Start();
-        }
-
-        public void ExecuteSingleCommand()
-        {
-            
+            _hidDevice.ReadReport(OnMagicAirFindAction);
         }
 
         protected virtual void OnDeviceDataReceived(DeviceFoundArgs e)
@@ -147,6 +158,8 @@ namespace Tion.MagicAirTester.Tester
                     DeviceDataReceived = null;
                     DeviceFound = null;
                 }
+
+                _appTimer?.Dispose();
             }
 
             // Free any unmanaged objects here.
@@ -156,15 +169,12 @@ namespace Tion.MagicAirTester.Tester
 
         public void ExecuteSingleCommand(T command, Action onCommandExecuteAction)
         {
-            _currentCommand =  command;
-            _hidDevice.Write(_currentCommand.BytesCommand);
+            _hidDevice.Write(command.BytesCommand);
 
-            var timer = new Timer(_currentCommand.TimeToExecute);
+            var timer = new Timer(command.TimeToExecute);
             timer.Elapsed += (sender, args) =>
             {
                 timer.Stop();
-                
-                _currentCommand = null;
                 onCommandExecuteAction();
             };
             timer.Start();
@@ -174,6 +184,16 @@ namespace Tion.MagicAirTester.Tester
         {
             DeviceFound?.Invoke(this, EventArgs.Empty);
         }
+
+        protected virtual void OnTestFinished(List<Command> result)
+        {
+            TestFinished?.Invoke(this, new AutocommandsResult(){Result = result});
+        }
+    }
+
+    public class AutocommandsResult : EventArgs
+    {
+        public List<Command> Result { get; set; }
     }
 
     public class DeviceFoundArgs : EventArgs

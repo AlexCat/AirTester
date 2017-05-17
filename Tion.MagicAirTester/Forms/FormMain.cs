@@ -20,16 +20,16 @@ namespace Tion.MagicAirTester.Forms
 {
     public partial class FormMain : Form
     {
-        private readonly TestersFactory _testersFactory;
+        private readonly ExecutorsFactory _executorsFactory;
         private readonly IOutputService _outputService;
         private readonly ILiveParser _liveParser;
         private IBreezerState _breezerState = new BreezerState();
         private IMagicAirState _magicAirState = new MagicAirState();
         private CommandExecutor<Bs310Command> _commandExecutor;
 
-        public FormMain(FormFactory formFactory, TestersFactory testersFactory, IOutputService outputService, ILiveParser liveParser)
+        public FormMain(FormFactory formFactory, ExecutorsFactory executorsFactory, IOutputService outputService, ILiveParser liveParser)
         {
-            _testersFactory = testersFactory;
+            _executorsFactory = executorsFactory;
             _outputService = outputService;
             _liveParser = liveParser;
             InitializeComponent();
@@ -50,10 +50,15 @@ namespace Tion.MagicAirTester.Forms
             _magicAirState.ClearState();
             _breezerState.ClearState();
 
-            _commandExecutor = _testersFactory.CreateBs310Tester();
+            _commandExecutor = _executorsFactory.CreateBs310Tester(_breezerState);
 
             _commandExecutor.DeviceDataReceived += OnLiveDataReceivedStarted;
             _commandExecutor.DeviceFound += OnMagicAirFound;
+            _commandExecutor.TestFinished += CommandExecutorOnTestFinished;
+        }
+
+        private void CommandExecutorOnTestFinished(object sender, AutocommandsResult autocommandsResult)
+        {
         }
 
         private void OnMagicAirFound(object sender, EventArgs eventArgs)
@@ -64,10 +69,8 @@ namespace Tion.MagicAirTester.Forms
 
                 this.button_connectBreezer.Enabled = true;
 
-                if (this.checkBox_autotest.Checked)
-                {
-                    _commandExecutor.StartAutotest();
-                }
+                _commandExecutor.ExecuteSingleCommand(
+                    new Bs310Command(0, "logenable", 1000, new BS310CommandResult(Bs310CommandResultProperty.Logenable, "")), () => { });
             });
         }
 
@@ -82,6 +85,10 @@ namespace Tion.MagicAirTester.Forms
                     if (!_breezerState.IsConnected)
                     {
                         _outputService.Log(LogType.Info, $"Breezer connected");
+                        if (this.checkBox_autotest.Checked)
+                        {
+                            _commandExecutor.StartAutotest();
+                        }
                     }
                     this.groupBox_breezerControls.Enabled = true;
                     this.button_connectBreezer.Enabled = false;
@@ -152,8 +159,8 @@ namespace Tion.MagicAirTester.Forms
         private void button_connectBreezer_Click(object sender, EventArgs e)
         {
             _outputService.Log(LogType.Info, "Searching breezer...");
-            _commandExecutor.ExecuteSingleCommand(
-                new Bs310Command(1, "pairing 0 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")), () => {});
+            _commandExecutor.ExecuteSingleCommand(new Bs310Command(1, "pairing 0 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
+                () => { });
         }
 
         private void button_unpairBreezer_Click(object sender, EventArgs e)
