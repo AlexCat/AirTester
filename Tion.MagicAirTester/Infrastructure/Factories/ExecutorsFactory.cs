@@ -25,13 +25,13 @@ namespace Tion.MagicAirTester.Infrastructure.Factories
         {
             var cmd = new List<Command>()
             {
-                new Bs310Command(100, "!upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 4
-                new Bs310Command(101, "!upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 5
-                new Bs310Command(102, "!upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 6
-                new Bs310Command(103, "!dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 5
-                new Bs310Command(104, "!dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 4
-                new Bs310Command(105, "!dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 3
-                new Bs310Command(105, "!deldev 1", 2000, new BS310CommandResult(DeviceCommandType.UnpairWithBreezer3S, ""), false), // 3
+                new Bs310Command(100, "upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 4
+                new Bs310Command(101, "upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 5
+                new Bs310Command(102, "upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 6
+                new Bs310Command(103, "dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 5
+                new Bs310Command(104, "dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 4
+                new Bs310Command(105, "dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 3
+                new Bs310Command(105, "deldev 1", 2000, new BS310CommandResult(DeviceCommandType.UnpairWithBreezer3S, ""), false), // 3
             };
             var b = new ScenariesBuilder(new Breezer3SState() { Speed = 3 }, cmd);
             return new CommandExecutor<Bs310Command>(b, _deviceFinderFactory.CreateBS310Finder(), breezerState);

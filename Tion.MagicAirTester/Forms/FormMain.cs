@@ -18,7 +18,7 @@ namespace Tion.MagicAirTester.Forms
         private IBreezerState _breezer3SState = new Breezer3SState();
         private IMagicAirState _magicAirBS310State = new MagicAirBS310State();
         private CommandExecutor<Bs310Command> _commandExecutor;
-        private bool _testPassed;
+        private bool _isTestGoOn;
 
         public FormMain(FormFactory formFactory, ExecutorsFactory executorsFactory, IOutputService outputService, ILiveParser liveParser)
         {
@@ -42,7 +42,12 @@ namespace Tion.MagicAirTester.Forms
 
             _magicAirBS310State.ClearState();
             _breezer3SState.ClearState();
-            _testPassed = false;
+            CheckIndicatorsState();
+
+            _isTestGoOn = false;
+
+            this.indicatorAutotestPassed.Visible = false;
+            this.indicatorAutotestFailed.Visible = false;
 
             _commandExecutor = _executorsFactory.CreateBs310Tester(_breezer3SState);
 
@@ -53,6 +58,37 @@ namespace Tion.MagicAirTester.Forms
 
         private void CommandExecutorOnTestFinished(object sender, TestFinishedArgs testFinishedArgs)
         {
+            _breezer3SState.ClearState();
+            CheckIndicatorsState();
+
+            var result = testFinishedArgs.Result;
+            bool success = true;
+            result.ForEach(c =>
+            {
+                if (!c.CommandResult.Ok)
+                {
+                    success = false;
+                    _outputService.Log(LogType.Info, $"Error on {c.CommandName} execution.");
+                }
+            });
+
+            ShowResultIndicator(success);
+        }
+
+        private void ShowResultIndicator(bool success)
+        {
+            this.InvokeIfRequired(c =>
+            {
+                if (success)
+                {
+                    this.indicatorAutotestPassed.Visible = true;
+                }
+                else
+                {
+                    this.indicatorAutotestFailed.Visible = true;
+                }
+                
+            });
         }
 
         private void OnMagicAirFound(object sender, EventArgs eventArgs)
@@ -61,10 +97,19 @@ namespace Tion.MagicAirTester.Forms
             {
                 _magicAirBS310State.isFound = true;
 
+                CheckIndicatorsState();
+
                 this.button_connectBreezer.Enabled = true;
 
                 _commandExecutor.ExecuteSingleCommand(
-                    new Bs310Command(0, "logenable", 1000, new BS310CommandResult(DeviceCommandType.Logenable, "")));
+                    new Bs310Command(0, "logenable", 1000, new BS310CommandResult(DeviceCommandType.Logenable, "")),
+                    () =>
+                    {
+                        this.InvokeIfRequired(c =>
+                        {
+                            _outputService.Log(LogType.Info, $"Command \"logenable\" finished");
+                        });
+                    });
             });
         }
 
@@ -80,9 +125,16 @@ namespace Tion.MagicAirTester.Forms
                     {
                         _outputService.Log(LogType.Info, $"Breezer connected");
                     }
-                    this.groupBox_breezerControls.Enabled = true;
-                    this.button_connectBreezer.Enabled = false;
+
+                    if (!_isTestGoOn)
+                    {
+                        this.groupBox_breezerControls.Enabled = true;
+                        this.button_connectBreezer.Enabled = false;
+                    }
+
                     _breezer3SState.IsConnected = true;
+
+                    CheckIndicatorsState();
                 }
 
                 // breezer speed parsing
@@ -94,9 +146,10 @@ namespace Tion.MagicAirTester.Forms
                 }
 
                 //run tests
-                if (_breezer3SState.IsConnected && _breezer3SState.Speed > 0 && this.checkBox_autotest.Checked && !_testPassed)
+                if (_breezer3SState.IsConnected && _breezer3SState.Speed > 0 && this.checkBox_autotest.Checked && !_isTestGoOn)
                 {
-                    _testPassed = true;
+                    _isTestGoOn = true;
+                    groupBox_breezerControls.Enabled = false;
                     _commandExecutor.StartTest();
                 }
             });
@@ -168,7 +221,6 @@ namespace Tion.MagicAirTester.Forms
                 {
                     this.InvokeIfRequired(c =>
                     {
-                        this.button_connectBreezer.Enabled = true;
                         _outputService.Log(LogType.Info, "Breezer deleted");
                         _breezer3SState.ClearState();
                     });
@@ -194,8 +246,20 @@ namespace Tion.MagicAirTester.Forms
                     this.InvokeIfRequired(control =>
                     {
                         _outputService.Log(LogType.Info, msg);
+
+                        _breezer3SState.IsConnected = false;
+                        CheckIndicatorsState();
                     });
                 });
+        }
+
+        private void CheckIndicatorsState()
+        {
+            this.InvokeIfRequired(c =>
+            {
+                indicatorMagicAirConnected.Visible = _magicAirBS310State.isFound;
+                indicatorBreezer3SConnected.Visible = _breezer3SState.IsConnected;
+            });
         }
     }
 }

@@ -38,9 +38,9 @@
             this.checkBox_autotest = new System.Windows.Forms.CheckBox();
             this.button_magicAirFind = new System.Windows.Forms.Button();
             this.groupBox_testingIndicators = new System.Windows.Forms.GroupBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.indicatorAutotestPassed = new System.Windows.Forms.PictureBox();
+            this.indicatorBreezer3SConnected = new System.Windows.Forms.PictureBox();
+            this.indicatorMagicAirConnected = new System.Windows.Forms.PictureBox();
             this.groupBox_breezerControls = new System.Windows.Forms.GroupBox();
             this.button_unpairBreezer = new System.Windows.Forms.Button();
             this.button_breezerSpeedDown = new System.Windows.Forms.Button();
@@ -52,13 +52,15 @@
             this.breezerIsConnected = new System.Windows.Forms.Label();
             this.breezerSpeedValue = new System.Windows.Forms.Label();
             this.breezerSpeed = new System.Windows.Forms.Label();
+            this.indicatorAutotestFailed = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox_testingIndicators.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestPassed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorBreezer3SConnected)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorMagicAirConnected)).BeginInit();
             this.groupBox_breezerControls.SuspendLayout();
             this.breezerInfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestFailed)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -134,9 +136,10 @@
             // 
             // groupBox_testingIndicators
             // 
-            this.groupBox_testingIndicators.Controls.Add(this.pictureBox3);
-            this.groupBox_testingIndicators.Controls.Add(this.pictureBox2);
-            this.groupBox_testingIndicators.Controls.Add(this.pictureBox1);
+            this.groupBox_testingIndicators.Controls.Add(this.indicatorAutotestFailed);
+            this.groupBox_testingIndicators.Controls.Add(this.indicatorAutotestPassed);
+            this.groupBox_testingIndicators.Controls.Add(this.indicatorBreezer3SConnected);
+            this.groupBox_testingIndicators.Controls.Add(this.indicatorMagicAirConnected);
             this.groupBox_testingIndicators.Location = new System.Drawing.Point(11, 110);
             this.groupBox_testingIndicators.Name = "groupBox_testingIndicators";
             this.groupBox_testingIndicators.Size = new System.Drawing.Size(262, 127);
@@ -145,37 +148,38 @@
             this.groupBox_testingIndicators.Text = "Indicators";
             this.groupBox_testingIndicators.Enter += new System.EventHandler(this.groupBox_testingIndicators_Enter);
             // 
-            // pictureBox3
+            // indicatorAutotestPassed
             // 
-            this.pictureBox3.Image = global::Tion.MagicAirTester.Properties.Resources.ok_rr;
-            this.pictureBox3.Location = new System.Drawing.Point(179, 35);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(71, 59);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
+            this.indicatorAutotestPassed.Image = global::Tion.MagicAirTester.Properties.Resources.ok_rr;
+            this.indicatorAutotestPassed.Location = new System.Drawing.Point(179, 35);
+            this.indicatorAutotestPassed.Name = "indicatorAutotestPassed";
+            this.indicatorAutotestPassed.Size = new System.Drawing.Size(71, 59);
+            this.indicatorAutotestPassed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.indicatorAutotestPassed.TabIndex = 2;
+            this.indicatorAutotestPassed.TabStop = false;
+            this.indicatorAutotestPassed.Visible = false;
             // 
-            // pictureBox2
+            // indicatorBreezer3SConnected
             // 
-            this.pictureBox2.Image = global::Tion.MagicAirTester.Properties.Resources.breezer_logo_rr;
-            this.pictureBox2.Location = new System.Drawing.Point(95, 35);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(71, 59);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.indicatorBreezer3SConnected.Image = global::Tion.MagicAirTester.Properties.Resources.breezer_logo_rr;
+            this.indicatorBreezer3SConnected.Location = new System.Drawing.Point(95, 35);
+            this.indicatorBreezer3SConnected.Name = "indicatorBreezer3SConnected";
+            this.indicatorBreezer3SConnected.Size = new System.Drawing.Size(71, 59);
+            this.indicatorBreezer3SConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.indicatorBreezer3SConnected.TabIndex = 1;
+            this.indicatorBreezer3SConnected.TabStop = false;
+            this.indicatorBreezer3SConnected.Visible = false;
             // 
-            // pictureBox1
+            // indicatorMagicAirConnected
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(71, 58);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.indicatorMagicAirConnected.Image = ((System.Drawing.Image)(resources.GetObject("indicatorMagicAirConnected.Image")));
+            this.indicatorMagicAirConnected.Location = new System.Drawing.Point(12, 35);
+            this.indicatorMagicAirConnected.Name = "indicatorMagicAirConnected";
+            this.indicatorMagicAirConnected.Size = new System.Drawing.Size(71, 59);
+            this.indicatorMagicAirConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.indicatorMagicAirConnected.TabIndex = 0;
+            this.indicatorMagicAirConnected.TabStop = false;
+            this.indicatorMagicAirConnected.Visible = false;
             // 
             // groupBox_breezerControls
             // 
@@ -291,6 +295,17 @@
             this.breezerSpeed.TabIndex = 0;
             this.breezerSpeed.Text = "Speed";
             // 
+            // indicatorAutotestFailed
+            // 
+            this.indicatorAutotestFailed.Image = ((System.Drawing.Image)(resources.GetObject("indicatorAutotestFailed.Image")));
+            this.indicatorAutotestFailed.Location = new System.Drawing.Point(185, 35);
+            this.indicatorAutotestFailed.Name = "indicatorAutotestFailed";
+            this.indicatorAutotestFailed.Size = new System.Drawing.Size(59, 59);
+            this.indicatorAutotestFailed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.indicatorAutotestFailed.TabIndex = 3;
+            this.indicatorAutotestFailed.TabStop = false;
+            this.indicatorAutotestFailed.Visible = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -315,12 +330,13 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox_testingIndicators.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestPassed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorBreezer3SConnected)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorMagicAirConnected)).EndInit();
             this.groupBox_breezerControls.ResumeLayout(false);
             this.breezerInfoPanel.ResumeLayout(false);
             this.breezerInfoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestFailed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,9 +353,9 @@
         private System.Windows.Forms.CheckBox checkBox_autotest;
         private System.Windows.Forms.Button button_magicAirFind;
         private System.Windows.Forms.GroupBox groupBox_testingIndicators;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox indicatorMagicAirConnected;
+        private System.Windows.Forms.PictureBox indicatorBreezer3SConnected;
+        private System.Windows.Forms.PictureBox indicatorAutotestPassed;
         private System.Windows.Forms.GroupBox groupBox_breezerControls;
         private System.Windows.Forms.Button button_unpairBreezer;
         private System.Windows.Forms.Button button_breezerSpeedDown;
@@ -351,5 +367,6 @@
         private System.Windows.Forms.Label breezerSpeed;
         private System.Windows.Forms.Label breezerIsConnectedValue;
         private System.Windows.Forms.Label breezerIsConnected;
+        private System.Windows.Forms.PictureBox indicatorAutotestFailed;
     }
 }

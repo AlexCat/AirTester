@@ -176,9 +176,10 @@ namespace Tion.MagicAirTester.Tester
 
         public void ExecuteSingleCommand(T command, Action onDelayAfterCommandExecutes = null)
         {
-            _outputAction?.Invoke(LogType.Info, $"Command {command.CommandName} executing...");
+            _outputAction?.Invoke(LogType.Info, $"Command \"{command.CommandName}\" executing...");
 
-            _hidDevice.Write(command.BytesCommand);
+            var res = _hidDevice.Write(command.BytesCommand);
+
 
             _tm = new Timer(state =>
             {
