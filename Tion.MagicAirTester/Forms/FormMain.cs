@@ -52,12 +52,12 @@ namespace Tion.MagicAirTester.Forms
 
             _commandExecutor = _executorsFactory.CreateBs310Tester(_breezerState);
 
-            _commandExecutor.DeviceDataReceived += OnLiveDataReceivedStarted;
-            _commandExecutor.DeviceFound += OnMagicAirFound;
+            _commandExecutor.MagicAirDataReceived += OnLiveDataReceivedStarted;
+            _commandExecutor.MagicAirFound += OnMagicAirFound;
             _commandExecutor.TestFinished += CommandExecutorOnTestFinished;
         }
 
-        private void CommandExecutorOnTestFinished(object sender, AutocommandsResult autocommandsResult)
+        private void CommandExecutorOnTestFinished(object sender, TestFinishedArgs testFinishedArgs)
         {
         }
 
@@ -74,12 +74,12 @@ namespace Tion.MagicAirTester.Forms
             });
         }
 
-        private void OnLiveDataReceivedStarted(object o, DeviceFoundArgs deviceFoundArgs)
+        private void OnLiveDataReceivedStarted(object o, MagicAirDataReceivedArgs magicAirDataReceivedArgs)
         {
             this.InvokeIfRequired(control =>
             {
                 // breezer connecting state parsing
-                var isBreezerConnected = _liveParser.Parse(deviceFoundArgs.Report).IsConnected;
+                var isBreezerConnected = _liveParser.Parse(magicAirDataReceivedArgs.Report).IsConnected;
                 if (isBreezerConnected)
                 {
                     if (!_breezerState.IsConnected)
@@ -87,7 +87,8 @@ namespace Tion.MagicAirTester.Forms
                         _outputService.Log(LogType.Info, $"Breezer connected");
                         if (this.checkBox_autotest.Checked)
                         {
-                            _commandExecutor.StartAutotest();
+                            //_commandExecutor.StartAutotest();
+                            _commandExecutor.StartTest();
                         }
                     }
                     this.groupBox_breezerControls.Enabled = true;
@@ -96,7 +97,7 @@ namespace Tion.MagicAirTester.Forms
                 }
 
                 // breezer speed parsing
-                var currentSpeed = _liveParser.Parse(deviceFoundArgs.Report).Speed;
+                var currentSpeed = _liveParser.Parse(magicAirDataReceivedArgs.Report).Speed;
                 if (currentSpeed > 0 && _breezerState.Speed != currentSpeed)
                 {
                     _breezerState.Speed = currentSpeed;

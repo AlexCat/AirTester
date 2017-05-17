@@ -47,8 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppTimer.cs" />
-    <Compile Include="Bs310Parser.cs" />
     <Compile Include="CommandExecutor.cs" />
     <Compile Include="LiveBS310Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
