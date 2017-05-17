@@ -97,6 +97,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Breezer3S\Breezer3S.csproj">
+      <Project>{84BD2D02-E0B4-49CD-9575-E389AF7701AC}</Project>
+      <Name>Breezer3S</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tion.MagicAirTester.Commands\Tion.MagicAirTester.Commands.csproj">
       <Project>{96DCBD0D-48E0-46A1-8591-B2F111967C09}</Project>
       <Name>Tion.MagicAirTester.Commands</Name>
@@ -105,9 +109,9 @@
       <Project>{E7E6BDB7-8CCC-4825-8778-BD1E805C8ECF}</Project>
       <Name>Tion.MagicAirTester.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tion.MagicAirTester.DeviceFinder\Tion.MagicAirTester.DeviceFinder.csproj">
-      <Project>{15BEFB13-47B4-4441-8B60-F2015945B392}</Project>
-      <Name>Tion.MagicAirTester.DeviceFinder</Name>
+    <ProjectReference Include="..\Tion.MagicAirTester.MagicAirBS310\Tion.MagicAirTester.MagicAirBS310.csproj">
+      <Project>{80e0dea0-cb62-47a8-9799-472ec0cfff54}</Project>
+      <Name>Tion.MagicAirTester.MagicAirBS310</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tion.MagicAirTester.Tester\Tion.MagicAirTester.Tester.csproj">
       <Project>{90CB8521-B2DC-4D6A-9A8B-26A658B998B5}</Project>

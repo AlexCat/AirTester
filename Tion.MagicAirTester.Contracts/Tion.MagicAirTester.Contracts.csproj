@@ -43,22 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeviceFindEventArgs.cs" />
+    <Compile Include="IBreezerState.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="IDeviceFinder.cs" />
     <Compile Include="ILiveParser.cs" />
+    <Compile Include="IMagicAirState.cs" />
     <Compile Include="IOutputService.cs" />
-    <Compile Include="IParser.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Tion.MagicAirTester.Commands\Tion.MagicAirTester.Commands.csproj">
-      <Project>{96DCBD0D-48E0-46A1-8591-B2F111967C09}</Project>
-      <Name>Tion.MagicAirTester.Commands</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

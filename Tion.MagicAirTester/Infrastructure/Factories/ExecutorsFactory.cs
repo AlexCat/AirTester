@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using HidLibrary;
 using Tion.MagicAirTester.Commands;
 using Tion.MagicAirTester.Contracts;
+using Tion.MagicAirTester.MagicAirBS310;
 using Tion.MagicAirTester.Tester;
 
 namespace Tion.MagicAirTester.Infrastructure.Factories
@@ -22,21 +23,18 @@ namespace Tion.MagicAirTester.Infrastructure.Factories
 
         public CommandExecutor<Bs310Command> CreateBs310Tester(IBreezerState breezerState)
         {
-            var scenario1 = new List<Bs310Command>()
+            var cmd = new List<Command>()
             {
-            new Bs310Command(0, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, 3)),
-            new Bs310Command(1, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, 3)),
-            new Bs310Command(2, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, 3)),
-            new Bs310Command(3, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, 3)),
-            new Bs310Command(4, "upvent 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, 3)),
-
-                //new Bs310Command(1, "upvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "5")),
-                //new Bs310Command(2, "upvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
-                //new Bs310Command(3, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "5")),
-                //new Bs310Command(4, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "4")),
-                //new Bs310Command(5, "dwnvent 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "3"))
+                new Bs310Command(100, "!upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 4
+                new Bs310Command(101, "!upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 5
+                new Bs310Command(102, "!upvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 6
+                new Bs310Command(103, "!dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 5
+                new Bs310Command(104, "!dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 4
+                new Bs310Command(105, "!dwnvent 1", 2000, new BS310CommandResult(DeviceCommandType.Speed, 3)), // 3
+                new Bs310Command(105, "!deldev 1", 2000, new BS310CommandResult(DeviceCommandType.UnpairWithBreezer3S, ""), false), // 3
             };
-            return new CommandExecutor<Bs310Command>(scenario1, _deviceFinderFactory.CreateBS310Finder(), breezerState);
+            var b = new ScenariesBuilder(new Breezer3SState() { Speed = 3 }, cmd);
+            return new CommandExecutor<Bs310Command>(b, _deviceFinderFactory.CreateBS310Finder(), breezerState);
         }
     }
 }

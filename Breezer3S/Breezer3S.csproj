@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96DCBD0D-48E0-46A1-8591-B2F111967C09}</ProjectGuid>
+    <ProjectGuid>{84BD2D02-E0B4-49CD-9575-E389AF7701AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tion.MagicAirTester.Commands</RootNamespace>
-    <AssemblyName>Tion.MagicAirTester.Commands</AssemblyName>
+    <RootNamespace>Breezer3S</RootNamespace>
+    <AssemblyName>Breezer3S</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -40,9 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeviceCommandType.cs" />
-    <Compile Include="Command.cs" />
-    <Compile Include="CommandResult.cs" />
+    <Compile Include="Breezer3SState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

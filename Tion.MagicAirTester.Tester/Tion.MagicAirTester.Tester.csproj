@@ -48,8 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandExecutor.cs" />
-    <Compile Include="LiveBS310Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenariesBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,9 +63,9 @@
       <Project>{E7E6BDB7-8CCC-4825-8778-BD1E805C8ECF}</Project>
       <Name>Tion.MagicAirTester.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Tion.MagicAirTester.DeviceFinder\Tion.MagicAirTester.DeviceFinder.csproj">
-      <Project>{15BEFB13-47B4-4441-8B60-F2015945B392}</Project>
-      <Name>Tion.MagicAirTester.DeviceFinder</Name>
+    <ProjectReference Include="..\Tion.MagicAirTester.MagicAirBS310\Tion.MagicAirTester.MagicAirBS310.csproj">
+      <Project>{80E0DEA0-CB62-47A8-9799-472EC0CFFF54}</Project>
+      <Name>Tion.MagicAirTester.MagicAirBS310</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

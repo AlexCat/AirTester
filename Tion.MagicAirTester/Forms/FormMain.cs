@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using HidLibrary;
 using Tion.DeviceTester.Infrastructure.Factories;
 using Tion.MagicAirTester.Commands;
 using Tion.MagicAirTester.Contracts;
-using Tion.MagicAirTester.DeviceFinder;
 using Tion.MagicAirTester.Infrastructure;
 using Tion.MagicAirTester.Infrastructure.Factories;
+using Tion.MagicAirTester.MagicAirBS310;
 using Tion.MagicAirTester.Tester;
-using Timer = System.Timers.Timer;
 
 namespace Tion.MagicAirTester.Forms
 {
@@ -23,9 +15,10 @@ namespace Tion.MagicAirTester.Forms
         private readonly ExecutorsFactory _executorsFactory;
         private readonly IOutputService _outputService;
         private readonly ILiveParser _liveParser;
-        private IBreezerState _breezerState = new BreezerState();
-        private IMagicAirState _magicAirState = new MagicAirState();
+        private IBreezerState _breezer3SState = new Breezer3SState();
+        private IMagicAirState _magicAirBS310State = new MagicAirBS310State();
         private CommandExecutor<Bs310Command> _commandExecutor;
+        private bool _testPassed;
 
         public FormMain(FormFactory formFactory, ExecutorsFactory executorsFactory, IOutputService outputService, ILiveParser liveParser)
         {
@@ -47,10 +40,11 @@ namespace Tion.MagicAirTester.Forms
         {
             ResetFormState();
 
-            _magicAirState.ClearState();
-            _breezerState.ClearState();
+            _magicAirBS310State.ClearState();
+            _breezer3SState.ClearState();
+            _testPassed = false;
 
-            _commandExecutor = _executorsFactory.CreateBs310Tester(_breezerState);
+            _commandExecutor = _executorsFactory.CreateBs310Tester(_breezer3SState);
 
             _commandExecutor.MagicAirDataReceived += OnLiveDataReceivedStarted;
             _commandExecutor.MagicAirFound += OnMagicAirFound;
@@ -65,12 +59,12 @@ namespace Tion.MagicAirTester.Forms
         {
             this.InvokeIfRequired(control =>
             {
-                _magicAirState.isFound = true;
+                _magicAirBS310State.isFound = true;
 
                 this.button_connectBreezer.Enabled = true;
 
                 _commandExecutor.ExecuteSingleCommand(
-                    new Bs310Command(0, "logenable", 1000, new BS310CommandResult(Bs310CommandResultProperty.Logenable, "")), () => { });
+                    new Bs310Command(0, "logenable", 1000, new BS310CommandResult(DeviceCommandType.Logenable, "")));
             });
         }
 
@@ -82,26 +76,28 @@ namespace Tion.MagicAirTester.Forms
                 var isBreezerConnected = _liveParser.Parse(magicAirDataReceivedArgs.Report).IsConnected;
                 if (isBreezerConnected)
                 {
-                    if (!_breezerState.IsConnected)
+                    if (!_breezer3SState.IsConnected)
                     {
                         _outputService.Log(LogType.Info, $"Breezer connected");
-                        if (this.checkBox_autotest.Checked)
-                        {
-                            //_commandExecutor.StartAutotest();
-                            _commandExecutor.StartTest();
-                        }
                     }
                     this.groupBox_breezerControls.Enabled = true;
                     this.button_connectBreezer.Enabled = false;
-                    _breezerState.IsConnected = true;
+                    _breezer3SState.IsConnected = true;
                 }
 
                 // breezer speed parsing
                 var currentSpeed = _liveParser.Parse(magicAirDataReceivedArgs.Report).Speed;
-                if (currentSpeed > 0 && _breezerState.Speed != currentSpeed)
+                if (currentSpeed > 0 && _breezer3SState.Speed != currentSpeed)
                 {
-                    _breezerState.Speed = currentSpeed;
+                    _breezer3SState.Speed = currentSpeed;
                     _outputService.Log(LogType.Info, $"The speed was changed to {currentSpeed}");
+                }
+
+                //run tests
+                if (_breezer3SState.IsConnected && _breezer3SState.Speed > 0 && this.checkBox_autotest.Checked && !_testPassed)
+                {
+                    _testPassed = true;
+                    _commandExecutor.StartTest();
                 }
             });
         }
@@ -125,7 +121,7 @@ namespace Tion.MagicAirTester.Forms
 
         private void checkBox_autotest_CheckedChanged(object sender, EventArgs e)
         {
-            this.groupBox_breezerControls.Enabled = !this.checkBox_autotest.Checked && _breezerState.IsConnected;
+            this.groupBox_breezerControls.Enabled = !this.checkBox_autotest.Checked && _breezer3SState.IsConnected;
             var msg = this.checkBox_autotest.Checked ? "Program in automatic mode" : "Program in manual mode";
             _outputService.Log(LogType.Info, msg);
         }
@@ -135,10 +131,10 @@ namespace Tion.MagicAirTester.Forms
             _outputService.Log(LogType.Info, "Program started");
             checkBox_autotest_CheckedChanged(null, null);
             output.DataBindings.Add("Text", _outputService, "Data", true, DataSourceUpdateMode.OnPropertyChanged);
-            breezerSpeedValue.DataBindings.Add("Text", _breezerState, "Speed", true, DataSourceUpdateMode.OnPropertyChanged);
-            breezerIsConnectedValue.DataBindings.Add("Text", _breezerState, "IsConnected", true, DataSourceUpdateMode.OnPropertyChanged);
+            breezerSpeedValue.DataBindings.Add("Text", _breezer3SState, "Speed", true, DataSourceUpdateMode.OnPropertyChanged);
+            breezerIsConnectedValue.DataBindings.Add("Text", _breezer3SState, "IsConnected", true, DataSourceUpdateMode.OnPropertyChanged);
 
-            //breezerSpeedValue.DataBindings.Add("Text", _magicAirState, "isFound", true, DataSourceUpdateMode.OnPropertyChanged);
+            //breezerSpeedValue.DataBindings.Add("Text", _magicAirBS310State, "isFound", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void output_TextChanged(object sender, EventArgs e)
@@ -159,25 +155,22 @@ namespace Tion.MagicAirTester.Forms
 
         private void button_connectBreezer_Click(object sender, EventArgs e)
         {
-            _outputService.Log(LogType.Info, "Searching breezer...");
-            _commandExecutor.ExecuteSingleCommand(new Bs310Command(1, "pairing 0 1", 1000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
-                () => { });
+            _commandExecutor.ExecuteSingleCommand(new Bs310Command(1, "pairing 0 1", 1000, new BS310CommandResult(DeviceCommandType.PairingWithBreezer3S, "6")));
         }
 
         private void button_unpairBreezer_Click(object sender, EventArgs e)
         {
             this.groupBox_breezerControls.Enabled = false;
             
-            _outputService.Log(LogType.Info, "Deleting breezer...");
             _commandExecutor.ExecuteSingleCommand(
-                new Bs310Command(1, "deldev 1", 2000, new BS310CommandResult(Bs310CommandResultProperty.PairingWithBreezer3S, "6")),
+                new Bs310Command(1, "deldev 1", 2000, new BS310CommandResult(DeviceCommandType.PairingWithBreezer3S, "6")),
                 () =>
                 {
                     this.InvokeIfRequired(c =>
                     {
                         this.button_connectBreezer.Enabled = true;
                         _outputService.Log(LogType.Info, "Breezer deleted");
-                        _breezerState.ClearState();
+                        _breezer3SState.ClearState();
                     });
                 });
         }
@@ -189,15 +182,14 @@ namespace Tion.MagicAirTester.Forms
 
         private void ChangeSpeed(bool speedUp)
         {
-            _outputService.Log(LogType.Info, $"Change speed trying...");
             var stringCommand = speedUp ? "upvent 1" : "dwnvent 1";
-            var prevSpeed = _breezerState.Speed;
+            var prevSpeed = _breezer3SState.Speed;
             _commandExecutor.ExecuteSingleCommand(
-                new Bs310Command(0, stringCommand, 2000, new BS310CommandResult(Bs310CommandResultProperty.Speed, "0")),
+                new Bs310Command(0, stringCommand, 2000, new BS310CommandResult(DeviceCommandType.Speed, "0")),
                 () =>
                 {
-                    var msg = prevSpeed != _breezerState.Speed
-                        ? $"Speed changed to {_breezerState.Speed}"
+                    var msg = prevSpeed != _breezer3SState.Speed
+                        ? $"Speed changed to {_breezer3SState.Speed}"
                         : "Speed not changed";
                     this.InvokeIfRequired(control =>
                     {

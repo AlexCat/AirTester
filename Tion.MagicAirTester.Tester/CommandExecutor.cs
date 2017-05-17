@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using HidLibrary;
 using Tion.MagicAirTester.Commands;
 using Tion.MagicAirTester.Contracts;
+using Tion.MagicAirTester.Infrastructure.Factories;
+using Tion.MagicAirTester.MagicAirBS310;
 
 namespace Tion.MagicAirTester.Tester
 {
     public class CommandExecutor<T> : IDisposable where T : Command
     {
         private readonly IBreezerState _breezerState;
-        private readonly Queue<T> _commands;
+        private Queue<T> _commands;
         private readonly IDeviceFinder _finder;
         private List<Command> _autoCommandsResult;
         private T _currentCommand;
@@ -20,14 +21,16 @@ namespace Tion.MagicAirTester.Tester
         private Action<LogType, string> _outputAction;
         private bool _disposed;
         private Timer _tm;
+        private ScenariesBuilder _scenariesBuilder;
 
         public event EventHandler<MagicAirDataReceivedArgs> MagicAirDataReceived;
         public event EventHandler MagicAirFound;
         public event EventHandler<TestFinishedArgs> TestFinished;
 
-        public CommandExecutor(IEnumerable<T> commands, IDeviceFinder finder, IBreezerState breezerState)
+        public CommandExecutor(ScenariesBuilder scenariesBuilder, IDeviceFinder finder, IBreezerState breezerState)
         {
-            _commands = new Queue<T>(commands.OrderBy(x => x.OrderId));
+            _scenariesBuilder = scenariesBuilder;
+            //_commands = new Queue<T>(commands.OrderBy(x => x.OrderId));
             _finder = finder;
             _breezerState = breezerState;
         }
@@ -48,7 +51,7 @@ namespace Tion.MagicAirTester.Tester
             timer.Elapsed += (sender, args) =>
             {
                 timer.Stop();
-                _outputAction?.Invoke(LogType.Info, "MagicAir BS310 not found");
+                _outputAction?.Invoke(LogType.Warning, "MagicAir BS310 not found");
             };
             _finder.Run(device =>
             {
@@ -66,6 +69,7 @@ namespace Tion.MagicAirTester.Tester
         public void StartTest()
         {
             _outputAction?.Invoke(LogType.Info, "Automatic test started...");
+            _commands = new Queue<T>(_scenariesBuilder.GetCommands(_breezerState).Cast<T>());
 
             _hidDevice.MonitorDeviceEvents = true;
             _autoCommandsResult = new List<Command>();
@@ -88,7 +92,10 @@ namespace Tion.MagicAirTester.Tester
 
         private void OnTimerAction(object state)
         {
-            CheckResult();
+            if (_currentCommand.IsResultNeeded)
+            {
+                CheckResult();
+            }
 
             // проверка на рекурсию или ее завершение
             if (_commands.Any())
@@ -107,7 +114,7 @@ namespace Tion.MagicAirTester.Tester
         private void CheckResult()
         {
             // check speed
-            if (_currentCommand.CommandResult.Property == Bs310CommandResultProperty.Speed)
+            if (_currentCommand.CommandResult.Property == DeviceCommandType.Speed)
             {
                 _currentCommand.CommandResult.Ok = Convert.ToInt32(_currentCommand.CommandResult.Value) == _breezerState.Speed;
             }
@@ -167,17 +174,17 @@ namespace Tion.MagicAirTester.Tester
             _disposed = true;
         }
 
-        public void ExecuteSingleCommand(T command, Action onCommandExecuteAction)
+        public void ExecuteSingleCommand(T command, Action onDelayAfterCommandExecutes = null)
         {
+            _outputAction?.Invoke(LogType.Info, $"Command {command.CommandName} executing...");
+
             _hidDevice.Write(command.BytesCommand);
 
-            var timer = new System.Timers.Timer(command.TimeToExecute);
-            timer.Elapsed += (sender, args) =>
+            _tm = new Timer(state =>
             {
-                timer.Stop();
-                onCommandExecuteAction();
-            };
-            timer.Start();
+                onDelayAfterCommandExecutes?.Invoke();
+                _tm = null;
+            }, null, command.TimeToExecute, 0);
         }
     }
 

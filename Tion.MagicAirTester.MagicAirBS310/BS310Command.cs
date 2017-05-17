@@ -1,17 +1,19 @@
 ﻿using System.Linq;
 using System.Text;
+using Tion.MagicAirTester.Commands;
 
-namespace Tion.MagicAirTester.Commands
+namespace Tion.MagicAirTester.MagicAirBS310
 {
     public class Bs310Command : Command
     {
-        public Bs310Command(int orderId, string commandName, int timeToExecute, BS310CommandResult commandResult)
+        public Bs310Command(int orderId, string commandName, int timeToExecute, BS310CommandResult commandResult, bool isResultNeed = true)
         {
             CommandResult = commandResult;
             OrderId = orderId;
             CommandName = commandName;
             BytesCommand = ConvertToBytes(commandName);
             TimeToExecute = timeToExecute;
+            IsResultNeeded = isResultNeed;
         }
 
         public static byte[] ConvertToBytes(string command)

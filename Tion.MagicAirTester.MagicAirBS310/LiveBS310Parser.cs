@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using HidLibrary;
 using Tion.MagicAirTester.Contracts;
 
-namespace Tion.MagicAirTester.Tester
+namespace Tion.MagicAirTester.MagicAirBS310
 {
     public class LiveBS310Parser : ILiveParser
     {
@@ -19,9 +14,9 @@ namespace Tion.MagicAirTester.Tester
             return ParseData(str);
         }
 
-        private BreezerState ParseData(string data)
+        private Breezer3SState ParseData(string data)
         {
-            var breezer = new BreezerState();
+            var breezer = new Breezer3SState();
 
             // is connected
             Regex isConnectedReg = new Regex("br 2");

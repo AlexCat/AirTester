@@ -2,10 +2,9 @@
 using Autofac;
 using Tion.DeviceTester.Infrastructure.Factories;
 using Tion.MagicAirTester.Contracts;
-using Tion.MagicAirTester.DeviceFinder;
 using Tion.MagicAirTester.Infrastructure.Factories;
 using Tion.MagicAirTester.Infrastructure.Services;
-using Tion.MagicAirTester.Tester;
+using Tion.MagicAirTester.MagicAirBS310;
 
 namespace Tion.MagicAirTester {
 

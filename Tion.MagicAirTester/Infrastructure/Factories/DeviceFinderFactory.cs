@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tion.MagicAirTester.Contracts;
-using Tion.MagicAirTester.DeviceFinder;
+using Tion.MagicAirTester.MagicAirBS310;
 
 namespace Tion.MagicAirTester.Infrastructure.Factories
 {
