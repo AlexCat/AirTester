@@ -38,6 +38,7 @@
             this.checkBox_autotest = new System.Windows.Forms.CheckBox();
             this.button_magicAirFind = new System.Windows.Forms.Button();
             this.groupBox_testingIndicators = new System.Windows.Forms.GroupBox();
+            this.indicatorAutotestFailed = new System.Windows.Forms.PictureBox();
             this.indicatorAutotestPassed = new System.Windows.Forms.PictureBox();
             this.indicatorBreezer3SConnected = new System.Windows.Forms.PictureBox();
             this.indicatorMagicAirConnected = new System.Windows.Forms.PictureBox();
@@ -52,15 +53,14 @@
             this.breezerIsConnected = new System.Windows.Forms.Label();
             this.breezerSpeedValue = new System.Windows.Forms.Label();
             this.breezerSpeed = new System.Windows.Forms.Label();
-            this.indicatorAutotestFailed = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox_testingIndicators.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestFailed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestPassed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorBreezer3SConnected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorMagicAirConnected)).BeginInit();
             this.groupBox_breezerControls.SuspendLayout();
             this.breezerInfoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestFailed)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -71,7 +71,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(870, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(847, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -142,16 +142,27 @@
             this.groupBox_testingIndicators.Controls.Add(this.indicatorMagicAirConnected);
             this.groupBox_testingIndicators.Location = new System.Drawing.Point(11, 110);
             this.groupBox_testingIndicators.Name = "groupBox_testingIndicators";
-            this.groupBox_testingIndicators.Size = new System.Drawing.Size(262, 127);
+            this.groupBox_testingIndicators.Size = new System.Drawing.Size(262, 100);
             this.groupBox_testingIndicators.TabIndex = 3;
             this.groupBox_testingIndicators.TabStop = false;
             this.groupBox_testingIndicators.Text = "Indicators";
             this.groupBox_testingIndicators.Enter += new System.EventHandler(this.groupBox_testingIndicators_Enter);
             // 
+            // indicatorAutotestFailed
+            // 
+            this.indicatorAutotestFailed.Image = ((System.Drawing.Image)(resources.GetObject("indicatorAutotestFailed.Image")));
+            this.indicatorAutotestFailed.Location = new System.Drawing.Point(185, 23);
+            this.indicatorAutotestFailed.Name = "indicatorAutotestFailed";
+            this.indicatorAutotestFailed.Size = new System.Drawing.Size(59, 59);
+            this.indicatorAutotestFailed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.indicatorAutotestFailed.TabIndex = 3;
+            this.indicatorAutotestFailed.TabStop = false;
+            this.indicatorAutotestFailed.Visible = false;
+            // 
             // indicatorAutotestPassed
             // 
             this.indicatorAutotestPassed.Image = global::Tion.MagicAirTester.Properties.Resources.ok_rr;
-            this.indicatorAutotestPassed.Location = new System.Drawing.Point(179, 35);
+            this.indicatorAutotestPassed.Location = new System.Drawing.Point(179, 23);
             this.indicatorAutotestPassed.Name = "indicatorAutotestPassed";
             this.indicatorAutotestPassed.Size = new System.Drawing.Size(71, 59);
             this.indicatorAutotestPassed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -162,7 +173,7 @@
             // indicatorBreezer3SConnected
             // 
             this.indicatorBreezer3SConnected.Image = global::Tion.MagicAirTester.Properties.Resources.breezer_logo_rr;
-            this.indicatorBreezer3SConnected.Location = new System.Drawing.Point(95, 35);
+            this.indicatorBreezer3SConnected.Location = new System.Drawing.Point(95, 23);
             this.indicatorBreezer3SConnected.Name = "indicatorBreezer3SConnected";
             this.indicatorBreezer3SConnected.Size = new System.Drawing.Size(71, 59);
             this.indicatorBreezer3SConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -173,7 +184,7 @@
             // indicatorMagicAirConnected
             // 
             this.indicatorMagicAirConnected.Image = ((System.Drawing.Image)(resources.GetObject("indicatorMagicAirConnected.Image")));
-            this.indicatorMagicAirConnected.Location = new System.Drawing.Point(12, 35);
+            this.indicatorMagicAirConnected.Location = new System.Drawing.Point(12, 23);
             this.indicatorMagicAirConnected.Name = "indicatorMagicAirConnected";
             this.indicatorMagicAirConnected.Size = new System.Drawing.Size(71, 59);
             this.indicatorMagicAirConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -187,7 +198,7 @@
             this.groupBox_breezerControls.Controls.Add(this.button_breezerSpeedDown);
             this.groupBox_breezerControls.Controls.Add(this.button_breezerSpeedUp);
             this.groupBox_breezerControls.Enabled = false;
-            this.groupBox_breezerControls.Location = new System.Drawing.Point(11, 243);
+            this.groupBox_breezerControls.Location = new System.Drawing.Point(11, 213);
             this.groupBox_breezerControls.Name = "groupBox_breezerControls";
             this.groupBox_breezerControls.Size = new System.Drawing.Size(262, 100);
             this.groupBox_breezerControls.TabIndex = 4;
@@ -238,10 +249,10 @@
             // 
             // output
             // 
-            this.output.Location = new System.Drawing.Point(297, 71);
+            this.output.Location = new System.Drawing.Point(290, 71);
             this.output.Name = "output";
             this.output.ReadOnly = true;
-            this.output.Size = new System.Drawing.Size(542, 392);
+            this.output.Size = new System.Drawing.Size(542, 347);
             this.output.TabIndex = 6;
             this.output.Text = "";
             this.output.TextChanged += new System.EventHandler(this.output_TextChanged);
@@ -252,7 +263,7 @@
             this.breezerInfoPanel.Controls.Add(this.breezerIsConnected);
             this.breezerInfoPanel.Controls.Add(this.breezerSpeedValue);
             this.breezerInfoPanel.Controls.Add(this.breezerSpeed);
-            this.breezerInfoPanel.Location = new System.Drawing.Point(13, 363);
+            this.breezerInfoPanel.Location = new System.Drawing.Point(13, 318);
             this.breezerInfoPanel.Name = "breezerInfoPanel";
             this.breezerInfoPanel.Size = new System.Drawing.Size(262, 100);
             this.breezerInfoPanel.TabIndex = 7;
@@ -295,22 +306,11 @@
             this.breezerSpeed.TabIndex = 0;
             this.breezerSpeed.Text = "Speed";
             // 
-            // indicatorAutotestFailed
-            // 
-            this.indicatorAutotestFailed.Image = ((System.Drawing.Image)(resources.GetObject("indicatorAutotestFailed.Image")));
-            this.indicatorAutotestFailed.Location = new System.Drawing.Point(185, 35);
-            this.indicatorAutotestFailed.Name = "indicatorAutotestFailed";
-            this.indicatorAutotestFailed.Size = new System.Drawing.Size(59, 59);
-            this.indicatorAutotestFailed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.indicatorAutotestFailed.TabIndex = 3;
-            this.indicatorAutotestFailed.TabStop = false;
-            this.indicatorAutotestFailed.Visible = false;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 467);
+            this.ClientSize = new System.Drawing.Size(847, 429);
             this.Controls.Add(this.breezerInfoPanel);
             this.Controls.Add(this.output);
             this.Controls.Add(this.button_connectBreezer);
@@ -330,13 +330,13 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox_testingIndicators.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestFailed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestPassed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorBreezer3SConnected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorMagicAirConnected)).EndInit();
             this.groupBox_breezerControls.ResumeLayout(false);
             this.breezerInfoPanel.ResumeLayout(false);
             this.breezerInfoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestFailed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
