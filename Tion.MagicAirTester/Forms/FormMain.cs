@@ -259,8 +259,6 @@ namespace Tion.MagicAirTester.Forms
                     this.InvokeIfRequired(control =>
                     {
                         _outputService.Log(LogType.Info, msg);
-
-                        _breezer3SState.IsConnected = false;
                         CheckIndicatorsState();
                     });
                 });
