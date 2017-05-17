@@ -26,6 +26,7 @@ namespace Tion.MagicAirTester.Tester
         public event EventHandler<MagicAirDataReceivedArgs> MagicAirDataReceived;
         public event EventHandler MagicAirFound;
         public event EventHandler<TestFinishedArgs> TestFinished;
+        public event EventHandler MagicAirDisconnected;
 
         public CommandExecutor(ScenariesBuilder scenariesBuilder, IDeviceFinder finder, IBreezerState breezerState)
         {
@@ -126,7 +127,8 @@ namespace Tion.MagicAirTester.Tester
         {
             if (!_hidDevice.IsConnected)
             {
-                throw new Exception();
+                OnMagicAirDisconnected();
+                return;
             }
 
             OnMagicAirDataReceived(new MagicAirDataReceivedArgs {Report = report});
@@ -186,6 +188,11 @@ namespace Tion.MagicAirTester.Tester
                 onDelayAfterCommandExecutes?.Invoke();
                 _tm = null;
             }, null, command.TimeToExecute, 0);
+        }
+
+        protected virtual void OnMagicAirDisconnected()
+        {
+            MagicAirDisconnected?.Invoke(this, EventArgs.Empty);
         }
     }
 

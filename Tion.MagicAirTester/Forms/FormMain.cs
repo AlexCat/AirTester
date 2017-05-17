@@ -54,12 +54,25 @@ namespace Tion.MagicAirTester.Forms
             _commandExecutor.MagicAirDataReceived += OnLiveDataReceivedStarted;
             _commandExecutor.MagicAirFound += OnMagicAirFound;
             _commandExecutor.TestFinished += CommandExecutorOnTestFinished;
+            _commandExecutor.MagicAirDisconnected += OnMagicAirDisconnected;
+        }
+
+        private void OnMagicAirDisconnected(object sender, EventArgs eventArgs)
+        {
+            this.InvokeIfRequired(c =>
+            {
+                _outputService.Log(LogType.Info, $"MagicAir BS310 disconnected");
+            });
         }
 
         private void CommandExecutorOnTestFinished(object sender, TestFinishedArgs testFinishedArgs)
         {
-            _breezer3SState.ClearState();
-            CheckIndicatorsState();
+            this.InvokeIfRequired(c =>
+            {
+                _breezer3SState.ClearState();
+                CheckIndicatorsState();
+            });
+            
 
             var result = testFinishedArgs.Result;
             bool success = true;
