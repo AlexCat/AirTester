@@ -177,6 +177,9 @@
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>847, 24</value>
   </data>
+  <data name="breezerSpeed.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="button_connectBreezer.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 71</value>
   </data>
@@ -472,9 +475,6 @@
   <data name="indicatorAutotestPassed.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 59</value>
   </data>
-  <data name="&gt;&gt;englishToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;indicatorBreezer3SConnected.Parent" xml:space="preserve">
     <value>groupBox_testingIndicators</value>
   </data>
@@ -732,8 +732,8 @@
   <data name="&gt;&gt;breezerInfoPanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="breezerSpeed.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;englishToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 20</value>

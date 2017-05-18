@@ -38,6 +38,10 @@
             this.checkBox_autotest = new System.Windows.Forms.CheckBox();
             this.button_magicAirFind = new System.Windows.Forms.Button();
             this.groupBox_testingIndicators = new System.Windows.Forms.GroupBox();
+            this.indicatorAutotestFailed = new System.Windows.Forms.PictureBox();
+            this.indicatorAutotestPassed = new System.Windows.Forms.PictureBox();
+            this.indicatorBreezer3SConnected = new System.Windows.Forms.PictureBox();
+            this.indicatorMagicAirConnected = new System.Windows.Forms.PictureBox();
             this.groupBox_breezerControls = new System.Windows.Forms.GroupBox();
             this.button_unpairBreezer = new System.Windows.Forms.Button();
             this.button_breezerSpeedDown = new System.Windows.Forms.Button();
@@ -49,18 +53,14 @@
             this.breezerIsConnected = new System.Windows.Forms.Label();
             this.breezerSpeedValue = new System.Windows.Forms.Label();
             this.breezerSpeed = new System.Windows.Forms.Label();
-            this.indicatorAutotestFailed = new System.Windows.Forms.PictureBox();
-            this.indicatorAutotestPassed = new System.Windows.Forms.PictureBox();
-            this.indicatorBreezer3SConnected = new System.Windows.Forms.PictureBox();
-            this.indicatorMagicAirConnected = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox_testingIndicators.SuspendLayout();
-            this.groupBox_breezerControls.SuspendLayout();
-            this.breezerInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestFailed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestPassed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorBreezer3SConnected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorMagicAirConnected)).BeginInit();
+            this.groupBox_breezerControls.SuspendLayout();
+            this.breezerInfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -129,6 +129,32 @@
             this.groupBox_testingIndicators.Name = "groupBox_testingIndicators";
             this.groupBox_testingIndicators.TabStop = false;
             this.groupBox_testingIndicators.Enter += new System.EventHandler(this.groupBox_testingIndicators_Enter);
+            // 
+            // indicatorAutotestFailed
+            // 
+            resources.ApplyResources(this.indicatorAutotestFailed, "indicatorAutotestFailed");
+            this.indicatorAutotestFailed.Name = "indicatorAutotestFailed";
+            this.indicatorAutotestFailed.TabStop = false;
+            // 
+            // indicatorAutotestPassed
+            // 
+            resources.ApplyResources(this.indicatorAutotestPassed, "indicatorAutotestPassed");
+            this.indicatorAutotestPassed.Image = global::Tion.MagicAirTester.Properties.Resources.ok_rr;
+            this.indicatorAutotestPassed.Name = "indicatorAutotestPassed";
+            this.indicatorAutotestPassed.TabStop = false;
+            // 
+            // indicatorBreezer3SConnected
+            // 
+            resources.ApplyResources(this.indicatorBreezer3SConnected, "indicatorBreezer3SConnected");
+            this.indicatorBreezer3SConnected.Image = global::Tion.MagicAirTester.Properties.Resources.breezer_logo_rr;
+            this.indicatorBreezer3SConnected.Name = "indicatorBreezer3SConnected";
+            this.indicatorBreezer3SConnected.TabStop = false;
+            // 
+            // indicatorMagicAirConnected
+            // 
+            resources.ApplyResources(this.indicatorMagicAirConnected, "indicatorMagicAirConnected");
+            this.indicatorMagicAirConnected.Name = "indicatorMagicAirConnected";
+            this.indicatorMagicAirConnected.TabStop = false;
             // 
             // groupBox_breezerControls
             // 
@@ -205,32 +231,6 @@
             resources.ApplyResources(this.breezerSpeed, "breezerSpeed");
             this.breezerSpeed.Name = "breezerSpeed";
             // 
-            // indicatorAutotestFailed
-            // 
-            resources.ApplyResources(this.indicatorAutotestFailed, "indicatorAutotestFailed");
-            this.indicatorAutotestFailed.Name = "indicatorAutotestFailed";
-            this.indicatorAutotestFailed.TabStop = false;
-            // 
-            // indicatorAutotestPassed
-            // 
-            resources.ApplyResources(this.indicatorAutotestPassed, "indicatorAutotestPassed");
-            this.indicatorAutotestPassed.Image = global::Tion.MagicAirTester.Properties.Resources.ok_rr;
-            this.indicatorAutotestPassed.Name = "indicatorAutotestPassed";
-            this.indicatorAutotestPassed.TabStop = false;
-            // 
-            // indicatorBreezer3SConnected
-            // 
-            resources.ApplyResources(this.indicatorBreezer3SConnected, "indicatorBreezer3SConnected");
-            this.indicatorBreezer3SConnected.Image = global::Tion.MagicAirTester.Properties.Resources.breezer_logo_rr;
-            this.indicatorBreezer3SConnected.Name = "indicatorBreezer3SConnected";
-            this.indicatorBreezer3SConnected.TabStop = false;
-            // 
-            // indicatorMagicAirConnected
-            // 
-            resources.ApplyResources(this.indicatorMagicAirConnected, "indicatorMagicAirConnected");
-            this.indicatorMagicAirConnected.Name = "indicatorMagicAirConnected";
-            this.indicatorMagicAirConnected.TabStop = false;
-            // 
             // FormMain
             // 
             resources.ApplyResources(this, "$this");
@@ -250,13 +250,13 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox_testingIndicators.ResumeLayout(false);
-            this.groupBox_breezerControls.ResumeLayout(false);
-            this.breezerInfoPanel.ResumeLayout(false);
-            this.breezerInfoPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestFailed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorAutotestPassed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorBreezer3SConnected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.indicatorMagicAirConnected)).EndInit();
+            this.groupBox_breezerControls.ResumeLayout(false);
+            this.breezerInfoPanel.ResumeLayout(false);
+            this.breezerInfoPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -293,6 +293,7 @@ namespace Tion.MagicAirTester.Forms
 
         private void ChangeLocale(LocaleInfo locale)
         {
+            MessageBox.Show(this, "Please reboot program", "Notification");
             _localizationService.ChangeLanguage(locale.Code);
             Settings.Default.Locale = locale.Code;
             Settings.Default.Save();
