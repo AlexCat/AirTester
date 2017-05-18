@@ -47,8 +47,10 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="IDeviceFinder.cs" />
     <Compile Include="ILiveParser.cs" />
+    <Compile Include="ILocaliztionService.cs" />
     <Compile Include="IMagicAirState.cs" />
     <Compile Include="IOutputService.cs" />
+    <Compile Include="LocaleInfo.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

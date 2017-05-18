@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Autofac;
@@ -9,6 +11,7 @@ using log4net;
 using log4net.Repository.Hierarchy;
 using Tion.DeviceTester;
 using Tion.DeviceTester.Infrastructure.Factories;
+using Tion.MagicAirTester.Properties;
 
 namespace Tion.MagicAirTester
 {

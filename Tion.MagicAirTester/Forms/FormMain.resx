@@ -117,10 +117,75 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="&gt;&gt;button_unpairBreezer.Parent" xml:space="preserve">
+    <value>groupBox_breezerControls</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_magicAirFind.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 71</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="&gt;&gt;button_connectBreezer.Name" xml:space="preserve">
+    <value>button_connectBreezer</value>
+  </data>
+  <data name="checkBox_autotest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 40</value>
+  </data>
+  <data name="&gt;&gt;breezerInfoPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="indicatorAutotestFailed.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="button_unpairBreezer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 25</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_breezerSpeedDown.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="optionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="&gt;&gt;indicatorAutotestPassed.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;button_connectBreezer.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox_testingIndicators.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 100</value>
+  </data>
+  <data name="&gt;&gt;indicatorMagicAirConnected.Parent" xml:space="preserve">
+    <value>groupBox_testingIndicators</value>
+  </data>
+  <data name="breezerIsConnectedValue.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="button_magicAirFind.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>847, 24</value>
+  </data>
+  <data name="button_connectBreezer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 71</value>
+  </data>
+  <data name="&gt;&gt;button_breezerSpeedUp.Name" xml:space="preserve">
+    <value>button_breezerSpeedUp</value>
+  </data>
+  <data name="&gt;&gt;groupBox_testingIndicators.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="indicatorAutotestFailed.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDbSAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAw
@@ -148,59 +213,69 @@
         /QG3QpjAEImisgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="indicatorMagicAirConnected.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
+  <data name="chineseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
   </data>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>52</value>
-  </metadata>
+  <data name="output.Size" type="System.Drawing.Size, System.Drawing">
+    <value>542, 347</value>
+  </data>
+  <data name="breezerIsConnected.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="breezerIsConnectedValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="indicatorAutotestFailed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 23</value>
+  </data>
+  <data name="indicatorAutotestFailed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 59</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>MagicAir Tester</value>
+  </data>
+  <data name="checkBox_autotest.Text" xml:space="preserve">
+    <value>Automatic test</value>
+  </data>
+  <data name="groupBox_testingIndicators.Text" xml:space="preserve">
+    <value>Indicators</value>
+  </data>
+  <data name="&gt;&gt;button_breezerSpeedUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;languageToolStripMenuItem.Name" xml:space="preserve">
+    <value>languageToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;button_breezerSpeedUp.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="optionsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="button_breezerSpeedDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 61</value>
+  </data>
+  <data name="breezerIsConnectedValue.Text" xml:space="preserve">
+    <value>false</value>
+  </data>
+  <data name="&gt;&gt;button_breezerSpeedDown.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;breezerIsConnected.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="breezerIsConnected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIADTJQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAgEAAAA9ntg7QAAJZpJ
@@ -367,4 +442,513 @@
         USbNE6iGL4UExdA+CN6vAhWoQAUqoDP+H/oEsMDAYYeCAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="&gt;&gt;indicatorMagicAirConnected.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;output.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="button_breezerSpeedDown.Text" xml:space="preserve">
+    <value>Speed Down</value>
+  </data>
+  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 22</value>
+  </data>
+  <data name="breezerInfoPanel.Text" xml:space="preserve">
+    <value>Breezer Info Panel</value>
+  </data>
+  <data name="&gt;&gt;output.Name" xml:space="preserve">
+    <value>output</value>
+  </data>
+  <data name="breezerInfoPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 318</value>
+  </data>
+  <data name="breezerSpeedValue.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="output.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 71</value>
+  </data>
+  <data name="indicatorAutotestPassed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 59</value>
+  </data>
+  <data name="&gt;&gt;englishToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;indicatorBreezer3SConnected.Parent" xml:space="preserve">
+    <value>groupBox_testingIndicators</value>
+  </data>
+  <data name="breezerSpeedValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>81, 45</value>
+  </data>
+  <data name="&gt;&gt;indicatorAutotestFailed.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button_magicAirFind.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;button_unpairBreezer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;breezerIsConnectedValue.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chineseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="groupBox_breezerControls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 213</value>
+  </data>
+  <data name="groupBox_breezerControls.Text" xml:space="preserve">
+    <value>Breezer controls</value>
+  </data>
+  <data name="button_breezerSpeedUp.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;optionsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;breezerSpeedValue.Parent" xml:space="preserve">
+    <value>breezerInfoPanel</value>
+  </data>
+  <data name="&gt;&gt;breezerSpeedValue.Name" xml:space="preserve">
+    <value>breezerSpeedValue</value>
+  </data>
+  <data name="&gt;&gt;breezerSpeedValue.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;indicatorAutotestFailed.Name" xml:space="preserve">
+    <value>indicatorAutotestFailed</value>
+  </data>
+  <data name="&gt;&gt;button_connectBreezer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="indicatorBreezer3SConnected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 59</value>
+  </data>
+  <data name="indicatorBreezer3SConnected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 23</value>
+  </data>
+  <data name="button_connectBreezer.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBox_breezerControls.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="breezerIsConnected.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;breezerSpeedValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_magicAirFind.Text" xml:space="preserve">
+    <value>Find new MagicAir</value>
+  </data>
+  <data name="button_unpairBreezer.Text" xml:space="preserve">
+    <value>Unpair Breezer</value>
+  </data>
+  <data name="&gt;&gt;breezerIsConnectedValue.Parent" xml:space="preserve">
+    <value>breezerInfoPanel</value>
+  </data>
+  <data name="&gt;&gt;groupBox_breezerControls.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox_testingIndicators.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;output.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;button_unpairBreezer.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;englishToolStripMenuItem.Name" xml:space="preserve">
+    <value>englishToolStripMenuItem</value>
+  </data>
+  <data name="indicatorMagicAirConnected.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
+  <data name="&gt;&gt;indicatorBreezer3SConnected.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;indicatorBreezer3SConnected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="indicatorMagicAirConnected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 23</value>
+  </data>
+  <data name="&gt;&gt;output.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_testingIndicators.Name" xml:space="preserve">
+    <value>groupBox_testingIndicators</value>
+  </data>
+  <data name="breezerSpeed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 45</value>
+  </data>
+  <data name="&gt;&gt;indicatorBreezer3SConnected.Name" xml:space="preserve">
+    <value>indicatorBreezer3SConnected</value>
+  </data>
+  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 22</value>
+  </data>
+  <data name="button_breezerSpeedUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 29</value>
+  </data>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="&gt;&gt;optionsToolStripMenuItem.Name" xml:space="preserve">
+    <value>optionsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;groupBox_testingIndicators.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="breezerIsConnected.Text" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="&gt;&gt;button_connectBreezer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button_breezerSpeedDown.Parent" xml:space="preserve">
+    <value>groupBox_breezerControls</value>
+  </data>
+  <data name="indicatorBreezer3SConnected.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="indicatorAutotestPassed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 23</value>
+  </data>
+  <data name="breezerInfoPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 100</value>
+  </data>
+  <data name="&gt;&gt;breezerSpeed.Name" xml:space="preserve">
+    <value>breezerSpeed</value>
+  </data>
+  <data name="indicatorBreezer3SConnected.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
+  <data name="checkBox_autotest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 21</value>
+  </data>
+  <data name="indicatorMagicAirConnected.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAHgAAAA7CAYAAACwqE4QAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EgAACxIB0t1+/AAACmFJREFUeF7tnVtsHFcZx73ry9qOE3s3TnyNb7GTjS/JbmznQsgDlIsQQiCQqvLC
+        A+qNi6hUEKUURIV4ANEnUlQpSO1D4KUCpD5WrRqBBEEo5VrELa2gqkA0daokTUJBxPx/356zHjd1PbNe
+        p/bM/KXxzHzn9l3mO+c7c86OGzYzMplMo04cVeRyuf7u7u5bR0dHT0xOTv6sVCq9NDc3d3V+fv66jkV3
+        XIdGGnmU92HKUNZV49Ho2khxMyGlZ3XiMLS2to4ODAzcPzU19cvZ2dkLGG7fvn3PDA8Pf6enp+czhULh
+        w1u3bj2uY84dx6GRRh7yUoay1EFd1OmqB1nXZop1hvS85FFdXV3vLRaLT8kbr83MzPxhcHDw6zLefDab
+        bXJZQoMylKUO6qJO6qYNl8X3GJnKXYq6ImjYbdu2HZen/Vxd7ZXx8fFTHR0d8y4pCLrXJndYV6vDPDFw
+        b+nkrRRZAnVSN23QFm26pGW8pKgDnBEampubCxMTEz84dOjQ62NjY9/TmLnLMlSgbGYwutJavIzyGJ+2
+        quVpg7Zok7bhAbrLl2KNQNHmLfl8/oPqNhemp6fPbNmyZQYakKLNM91t3eCMXfXU9vb2GdqGB3hxZNLT
+        LrtGoDgz3NDQ0DcOHz58XcHPF7kHzoNuhnLV1JK3wgO8wJMj1dpjJBoozJS2Z8+eH8prLmoMPMq9gELr
+        7rEhUG0XXuAJ3rgXqvymWB0oiu4xoyj26XK5/PeWlhabn4rUzPnthOcBnuANHuFVpNSTQwBdWXcoxT0p
+        BZ5TUNPpEjZMUON5gTfNn8/Ba4CeGnkleMUpan3s4MGDLwci1g03LfE8wSO8wrOjb5gHcUPBK6y3t/dz
+        mpIstra2jgXpGxGeN3iFZ3gP0lM4eIVo+nNAEepioVD4kKNveG/wPMIzvCODo6dGdpAuKnPZAwcOvDA6
+        OnrSEd/2gCosPK/wjgzIgkwkQU80nCKYX35ZY9mFbDab24TKEcuZRnhHBmRxxMR7sU0tNOXYwRLe9u3b
+        PwqxRsXYa8Z6HNRVqTI8VM54RgZkQSbIOiLXFRs4ZTaMjIx8d2Zm5veOFtm4tZRZDWvhA1mQydESG1Vb
+        F8w0Y25u7r/5fP4D0GpQrHlILpfr6+npuV3d4339/f0cX1rp6Ovru1d5P63jLl3fozIPiH4fZRUJf0pR
+        8W6rOaL3Od4zyIJMfpoHzZ2TA/9ko3AFJn8zYnSFWn4Z6k51i1dVz/OTk5NndTzrjl9NTU39moNrjunp
+        6ecYJ48cObJ47NixRV1f3rt372nl+Y3Sz8r7/qQpz79l7K9aI9G7WMuPTMjGtZc1aZDcGRTxPN7jCKEV
+        obzm6XgL05Pu7u7bLCEEFAw1dnR0lMfGxh6ZnZ09v3Pnzk+6JENXV9d7mNeKfgf3vq0w8DIgE7IhI2T+
+        JAYS2p5yzRn3qyv7jwKSAUuI5i2WVx75u6GhoYe4Vr05zgDFsu2GXRq0E+gul8HPX73H+jrowsvl8r90
+        j8EwUFgjGV/IhGy0zb2XORFwSmtgewxdoxGjGbfiFpp/lkqlVzo7O9/FNTSNxYMKcE6I/qK885K64Fd1
+        vqjjVbV1ZseOHZ8gH2Baw5ndGhhZ9bybe9XVqIdjXGUuM7ZDEyI/fMiGjFx7mRMBCWsK0Jj3i127dn2z
+        QoqkAG/gHAb2+6YUIN3ttticodtta2vb09TUVJA39cqI7xweHn5IRlvQOHtWBhyhjIzcylm9wLf3799v
+        Lym4l2H36uG4qHyD3AuhDexkySAbMjpalAdkU8OMg2IJdmSc9xsxWvRcNbC60QvqhkuKhr9A4KSx+OOW
+        YwXI4J0TExOP60G4pnF4TiR76wRdXerr3otl2H3i71KNBjZZkA0Z/UMkhO3mNzVMUe3t7dPyptfkXb4L
+        jCK8f0ja5Y0vjI+Pn5Rx/icvfYclqrvWwUsL2iKvLqv7rQzyrgeD+TkXi8XT8vITXMuwk7UaWDD+kA0Z
+        JeuUUaPVsTkhZdrTreDmY/K+f6B5S3BKCQlv4DYMfPToUSLe2x2tGmitAMouU7QzfIY90poyPQXNefDl
+        tRgY2ZARWd19lF5qc8Ips4EuVRHwb40Y/cn2Bm7RVOSCjPxn1Uvd5oms6DDOyoN2ci/c8PA4ZVu7nid5
+        9bdk4J9wvUYDA8uPjMjKtW8n1vBCMrVRl/iMo0V9sr2HNMsIV2UY2wBH3UKXaAua4z6KN4u2qmEcTxmV
+        OaXx+UfQZFi66JoN7GVCxsA0LjkGljJPSplPBGkR4A3coi7wku8Cwe7du78v7/U9A7jBe98EZjxF0X+V
+        t32eaxm2KAPXFEUDLxMyImuQFmsEDPyYDtuVuAYDM01aULT6Pu5ljGFFx4u83Kgkr94zuDwZylBWdQxB
+        55cNRNWaLvkfpNVkYGRE1iAt1ggIXg8PtnlwPp83AzPW4YVcC2EMUvVuvB7vd7e8Av0Irytl4F5HSj04
+        DLyQdRqDlxlYyvyxlHmqkrS6MpVHw3Q2pzKPMm4zfvtyAwMDDzoD91jm6AZO9hhcjyhadS17kyVl/pRI
+        2KV5ZfrtM2+E1UGkTcQd2EvFHJro94/qsq/X6sGC5U9iFG3Krsc8WEWXGVhTnKeZy1aSblAmCn/LNvwc
+        muVH3k2Lv4UagyzPX/LmwYIpqh5vsqSwZV30yMjIw/Li0y7N5sS8reKtFddA9Dd9w6Wjmp+ueXBw8Gua
+        Y7/U1tY2DF2IbOBEvskSTHh5S13eRQc9uLOz8xYiX94ru/qyvG/mvbPG58ehk28l8B6b99n9/f33K2+3
+        jHOlFg/2siAbMiKrJTi+Yw8pwJRVp9Wk81LkLe4+y4oQK0Pce8XKSCOMszLYAitKrCzJu3plxAIrTqw8
+        sQKlB+EKK1KujF9s8L9BjmJgZEnsapJXQL3WgxfcejBek2E1iPFTRrRf5PtxFbAWjCFlaFsjlgE5X1Id
+        L7KGrIDKvJV6ZViWC1kPriXIsryJXw9ehx0dLZzZnYGRFdzYLyTeCHZ30DYvN2TIUZVzKUsPhDz5szL8
+        P5VmDw60kDC+kAnZErmjw0Eyr9+eLLpdeed5zXEfYf+VDGf5w4Ax3e3JshUq31YYeBkSvScLBBRRz12V
+        59gZSdfITkm6WHZOEjgR7Mjbn1O67a5UnuBuS78L81mN4X+Rca+pa/2KNRKRJ8HyIxOyce1lTRrsqV6v
+        fdE6P9DX13ePaHexgU7X96Lwtzooy8NCUGY1R3/grDtHFmRK9L5o4J/sjfjLBqFmPpAl/WVDBXhI+tuk
+        OMMrRt1j+uvCmMKUoyP9fXBc4ZSR/sI/zvAK4TsXzEEVyabf6IgbpBjzhrH0KzuxhfRTUVCxWHyyVCpt
+        +O9klcvl9DtZEWFTCywtxaVfuospUJQpK/1WZXyBwkyhQ+nXZmMLFGfBTD7wvWi+3QwNSPk35XvRmv6k
+        34teL3gPImKdSL/4Hk9IoVVvYrfGVPo/G2IJ6XZJuSzMK4pN/+tK3CBF0w1Xx1223Sj4Sf9vUtzgPGpZ
+        d6kx0/7zGZvoJkP+5zPyUoayrhoP68rd9SZEQ8P/AQTxrWzmlfwjAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="&gt;&gt;indicatorAutotestFailed.Parent" xml:space="preserve">
+    <value>groupBox_testingIndicators</value>
+  </data>
+  <data name="&gt;&gt;groupBox_breezerControls.Name" xml:space="preserve">
+    <value>groupBox_breezerControls</value>
+  </data>
+  <data name="indicatorMagicAirConnected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 59</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox_breezerControls.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;breezerSpeed.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;breezerIsConnectedValue.Name" xml:space="preserve">
+    <value>breezerIsConnectedValue</value>
+  </data>
+  <data name="&gt;&gt;button_breezerSpeedDown.Name" xml:space="preserve">
+    <value>button_breezerSpeedDown</value>
+  </data>
+  <data name="button_connectBreezer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 29</value>
+  </data>
+  <data name="&gt;&gt;button_breezerSpeedDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="breezerSpeedValue.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="indicatorAutotestFailed.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;indicatorMagicAirConnected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menuStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 2, 0, 2</value>
+  </data>
+  <data name="&gt;&gt;checkBox_autotest.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;breezerInfoPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="breezerSpeed.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 20</value>
+  </data>
+  <data name="&gt;&gt;button_unpairBreezer.Name" xml:space="preserve">
+    <value>button_unpairBreezer</value>
+  </data>
+  <data name="breezerIsConnected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 28</value>
+  </data>
+  <data name="indicatorAutotestPassed.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormMain</value>
+  </data>
+  <data name="button_magicAirFind.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 29</value>
+  </data>
+  <data name="&gt;&gt;chineseToolStripMenuItem.Name" xml:space="preserve">
+    <value>chineseToolStripMenuItem</value>
+  </data>
+  <data name="button_unpairBreezer.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="button_breezerSpeedUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 25</value>
+  </data>
+  <data name="breezerSpeedValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 17</value>
+  </data>
+  <data name="groupBox_breezerControls.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 100</value>
+  </data>
+  <data name="&gt;&gt;breezerIsConnected.Parent" xml:space="preserve">
+    <value>breezerInfoPanel</value>
+  </data>
+  <data name="breezerSpeed.Text" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;breezerIsConnected.Name" xml:space="preserve">
+    <value>breezerIsConnected</value>
+  </data>
+  <data name="groupBox_testingIndicators.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 110</value>
+  </data>
+  <data name="output.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox_testingIndicators.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="button_breezerSpeedDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 29</value>
+  </data>
+  <data name="&gt;&gt;indicatorAutotestPassed.Name" xml:space="preserve">
+    <value>indicatorAutotestPassed</value>
+  </data>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;chineseToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;breezerInfoPanel.Name" xml:space="preserve">
+    <value>breezerInfoPanel</value>
+  </data>
+  <data name="&gt;&gt;indicatorAutotestFailed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_breezerControls.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button_connectBreezer.Text" xml:space="preserve">
+    <value>Connect Breezer</value>
+  </data>
+  <data name="&gt;&gt;breezerIsConnectedValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_autotest.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;breezerSpeed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_autotest.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="breezerIsConnectedValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 28</value>
+  </data>
+  <data name="output.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;indicatorAutotestPassed.Parent" xml:space="preserve">
+    <value>groupBox_testingIndicators</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="breezerSpeed.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;indicatorMagicAirConnected.Name" xml:space="preserve">
+    <value>indicatorMagicAirConnected</value>
+  </data>
+  <data name="&gt;&gt;breezerIsConnected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_connectBreezer.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="breezerIsConnectedValue.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="breezerSpeedValue.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="indicatorAutotestPassed.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
+  <data name="&gt;&gt;checkBox_autotest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="indicatorAutotestFailed.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>847, 429</value>
+  </data>
+  <data name="breezerInfoPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="checkBox_autotest.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="indicatorMagicAirConnected.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;button_magicAirFind.Name" xml:space="preserve">
+    <value>button_magicAirFind</value>
+  </data>
+  <data name="checkBox_autotest.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="indicatorAutotestPassed.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="groupBox_breezerControls.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="indicatorMagicAirConnected.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button_magicAirFind.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;breezerInfoPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_autotest.Name" xml:space="preserve">
+    <value>checkBox_autotest</value>
+  </data>
+  <data name="button_unpairBreezer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 29</value>
+  </data>
+  <data name="indicatorBreezer3SConnected.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;breezerSpeed.Parent" xml:space="preserve">
+    <value>breezerInfoPanel</value>
+  </data>
+  <data name="&gt;&gt;button_breezerSpeedUp.Parent" xml:space="preserve">
+    <value>groupBox_breezerControls</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="breezerSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="&gt;&gt;indicatorAutotestPassed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_breezerSpeedUp.Text" xml:space="preserve">
+    <value>Speed Up</value>
+  </data>
+  <data name="&gt;&gt;languageToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_magicAirFind.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>zh-CHS</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>52</value>
+  </metadata>
 </root>

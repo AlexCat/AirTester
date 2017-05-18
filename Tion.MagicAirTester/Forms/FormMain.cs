@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using Tion.DeviceTester.Infrastructure.Factories;
 using Tion.MagicAirTester.Commands;
@@ -6,6 +8,7 @@ using Tion.MagicAirTester.Contracts;
 using Tion.MagicAirTester.Infrastructure;
 using Tion.MagicAirTester.Infrastructure.Factories;
 using Tion.MagicAirTester.MagicAirBS310;
+using Tion.MagicAirTester.Properties;
 using Tion.MagicAirTester.Tester;
 
 namespace Tion.MagicAirTester.Forms
@@ -15,18 +18,23 @@ namespace Tion.MagicAirTester.Forms
         private readonly ExecutorsFactory _executorsFactory;
         private readonly IOutputService _outputService;
         private readonly ILiveParser _liveParser;
+        private readonly ILocalizationService _localizationService;
         private IBreezerState _breezer3SState = new Breezer3SState();
         private IMagicAirState _magicAirBS310State = new MagicAirBS310State();
         private CommandExecutor<Bs310Command> _commandExecutor;
         private bool _isTestGoOn;
 
-        public FormMain(FormFactory formFactory, ExecutorsFactory executorsFactory, IOutputService outputService, ILiveParser liveParser)
+        public FormMain(FormFactory formFactory, ExecutorsFactory executorsFactory, IOutputService outputService, ILiveParser liveParser, ILocalizationService localizationService)
         {
             _executorsFactory = executorsFactory;
             _outputService = outputService;
             _liveParser = liveParser;
+            _localizationService = localizationService;
             InitializeComponent();
             InitializeControls();
+
+            _outputService.Log(LogType.Info, "Localization service successfully initiated.");
+            _localizationService.Initialize();
         }
 
         private void ResetFormState()
@@ -271,6 +279,24 @@ namespace Tion.MagicAirTester.Forms
                 indicatorMagicAirConnected.Visible = _magicAirBS310State.isFound;
                 indicatorBreezer3SConnected.Visible = _breezer3SState.IsConnected;
             });
+        }
+
+        private void chineseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeLocale(new LocaleInfo(){Name = "Chinese", Code = "zh-CHS" });
+        }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeLocale(new LocaleInfo() { Name = "English", Code = "en-US" });
+        }
+
+        private void ChangeLocale(LocaleInfo locale)
+        {
+            _localizationService.ChangeLanguage(locale.Code);
+            Settings.Default.Locale = locale.Code;
+            Settings.Default.Save();
+            _outputService.Log(LogType.Info, $"Locale changed to {locale.Name}");
         }
     }
 }

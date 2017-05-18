@@ -24,6 +24,7 @@ namespace Tion.MagicAirTester {
             builder.RegisterType<ExecutorsFactory>().AsSelf().SingleInstance();
             builder.RegisterType<BS310DeviceFinder>().As<IDeviceFinder>();
             builder.RegisterType<LiveBS310Parser>().As<ILiveParser>();
+            builder.RegisterType<LocalizationService>().As<ILocalizationService>();
 
             return builder.Build();
         }
